@@ -1,8 +1,8 @@
 # 🚀 AI Job Discovery Automation
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Companies_Tracked-215-2563eb?style=for-the-badge" alt="Companies Tracked"/>
-  <img src="https://img.shields.io/badge/ATS_Coverage-29%25-16a34a?style=for-the-badge" alt="ATS Coverage"/>
+  <img src="https://img.shields.io/badge/Companies_Tracked-268-2563eb?style=for-the-badge" alt="Companies Tracked"/>
+  <img src="https://img.shields.io/badge/ATS_Coverage-100%25_live--verified-16a34a?style=for-the-badge" alt="ATS Coverage"/>
   <img src="https://img.shields.io/badge/Global_Sources-4-f97316?style=for-the-badge" alt="Global Sources"/>
   <img src="https://img.shields.io/badge/Tests-50_passing-22c55e?style=for-the-badge" alt="Tests Passing"/>
   <img src="https://img.shields.io/badge/Cost-%240%2Fmonth-16a34a?style=for-the-badge" alt="Cost"/>
@@ -10,54 +10,70 @@
 
 <p align="center">
   <i>A daily, fully-free pipeline that finds high-quality AI Engineering job<br/>
-  postings from ~215 target companies plus trusted public job boards, dedupes<br/>
+  postings from ~268 live-verified target companies plus trusted public job boards, dedupes<br/>
   against jobs already seen, ranks them for relevance, and emails you a report<br/>
   every morning at 8:00 AM IST.</i>
 </p>
 
 ---
 
-## 📊 Snapshot (as of the last run: 2026-08-02)
+## 📊 Snapshot (companies list as of 2026-08-06; job counts as of the last full run: 2026-08-03)
+
+Since the `Rebuild company list from live-verified ATS identifiers` change,
+`data/companies.csv` only ever holds companies whose (ATS provider, ATS
+identifier) was confirmed with a real HTTP call to that provider's public
+API — there's no generic-HTML-fallback tier anymore. Unverifiable companies
+live in `reports/unresolved_companies.csv` instead, pending manual research.
 
 <table>
 <tr>
-  <td align="center">🏢<br/><b>215</b><br/>companies tracked</td>
-  <td align="center">✅<br/><b>63 (29%)</b><br/>confirmed ATS integration</td>
-  <td align="center">🔍<br/><b>152 (71%)</b><br/>generic fallback parsing</td>
-  <td align="center">⚠️<br/><b>17</b><br/>currently failing to fetch</td>
+  <td align="center">🏢<br/><b>268</b><br/>companies tracked</td>
+  <td align="center">✅<br/><b>100%</b><br/>live-verified ATS (no generic fallback)</td>
+  <td align="center">🕵️<br/><b>235</b><br/>candidates still pending (no supported ATS found)</td>
+  <td align="center">⚠️<br/><b>0</b><br/>currently failing to fetch</td>
 </tr>
 <tr>
-  <td align="center">📬<br/><b>58</b><br/>new jobs found</td>
-  <td align="center">📦<br/><b>96</b><br/>total relevant jobs</td>
-  <td align="center">⭐<br/><b>20</b><br/>top picks emailed</td>
+  <td align="center">📬<br/><b>78</b><br/>new jobs found (last run, 123-company list)</td>
+  <td align="center">📦<br/><b>115</b><br/>total relevant jobs (last run, 123-company list)</td>
+  <td align="center">⭐<br/><b>19</b><br/>top picks emailed (last run)</td>
   <td align="center">📧<br/><b>✅ sent</b><br/>daily digest</td>
 </tr>
 </table>
 
-### 🗺️ Where tomorrow's jobs come from
+*Job-count figures above predate the 123→268 company expansion — they're
+from the last actual pipeline run, not the current list. Re-run
+`python scripts/run_daily.py` to refresh them against all 268.*
 
-| Source type | Jobs tracked | Share |
-|---|---:|---:|
-| 🟢 **Direct ATS APIs** (Greenhouse, Ashby, Workday, Lever, SmartRecruiters, Workable, Oracle Recruiting) | 44 | 45% |
-| 🌍 **Global job boards** (Himalayas, Jobicy, RemoteOK, We Work Remotely) | 50 | 51% |
-| 🔎 **Generic career-page scraping** (no ATS detected — lower precision) | 4 | 4% |
-
-### 🎯 ATS provider coverage (of 215 target companies)
+### 🎯 ATS provider coverage (of 268 tracked companies, all live-verified)
 
 | Provider | Companies matched | |
 |---|---:|---|
-| 🟦 Workday | 19 | ████████████████████ |
-| 🟩 Greenhouse | 18 | ███████████████████ |
-| 🟪 Ashby | 16 | █████████████████ |
-| 🟧 Lever | 4 | ████ |
-| 🟨 SmartRecruiters | 2 | ██ |
-| 🟥 Oracle Recruiting Cloud | 2 | ██ |
-| ⬛ Workable | 2 | ██ |
+| 🟪 Ashby | 113 | ████████████████████ |
+| 🟩 Greenhouse | 83 | ███████████████ |
+| 🟦 Workday | 40 | ███████ |
+| 🟧 Lever | 19 | ███ |
+| 🟨 SmartRecruiters | 6 | █ |
+| 🟥 Oracle Recruiting Cloud | 2 | █ |
+| ⬛ Workable | 2 | █ |
+| 🟫 BambooHR | 2 | █ |
+| ⬜ TeamTailor | 1 | █ |
 | | | |
-| **Total confirmed** | **63 / 215 (29%)** | |
+| **Total confirmed** | **268 / 268 (100%)** | |
 
 Run `python scripts/unsupported_companies_report.py` any time for a fresh,
-company-by-company breakdown of exactly what's covered and what isn't.
+company-by-company breakdown of exactly what's covered and what isn't. To
+verify more companies, add candidates (Company, ATS free-text guess) to
+`data/companies_sample - Sheet1.csv` and run
+`python scripts/resolve_new_companies.py --new-only` — it live-verifies only
+the names not already in `data/companies.csv` and never touches or
+re-checks companies already confirmed. `--retry-unresolved --brute-force`
+retries everything in `reports/unresolved_companies.csv` against every
+guessable provider (Greenhouse/Lever/Ashby/Workable/SmartRecruiters/
+TeamTailor/BambooHR/Recruitee), ignoring the sheet's stated ATS hint — useful
+since that hint is frequently blank, wrong, or just "Custom". The remaining
+235 pending candidates are companies confirmed this way to be on a custom/
+proprietary hiring portal or an ATS this project doesn't have an adapter for
+(Zoho Recruit, Keka, Darwinbox, RippleHire, Breezy HR, JazzHR, Gem, Eightfold).
 
 ---
 

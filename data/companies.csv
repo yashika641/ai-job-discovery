@@ -1,124 +1,269 @@
 Company,Region,Category,Careers / Job Board URL,Remote Policy (typical),Est. Junior AI/ML Salary Range (1-3 YOE),Notes,Tier,Why Target This Company,Research Status,ATS,ATS Identifier
+1Password,,,https://jobs.ashbyhq.com/1password,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",ashby,1password
+AVEVA,,,https://aveva.wd3.myworkdayjobs.com/AVEVA_careers,,,,,,Verified live via WebSearch + manual verification (group 1),workday,aveva.wd3.myworkdayjobs.com/AVEVA_careers
 Abnormal AI,,,https://boards.greenhouse.io/abnormalsecurity,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 1),greenhouse,abnormalsecurity
 Abridge,,,https://jobs.ashbyhq.com/abridge,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 2),ashby,abridge
+Accenture,,,https://accenture.wd103.myworkdayjobs.com/AccentureCareers,,,,,,Verified live via Claude-in-Chrome recheck (round 2),workday,accenture.wd103.myworkdayjobs.com/AccentureCareers
+Ada,,,https://boards.greenhouse.io/ada18,,,,,,Verified live via WebSearch + manual verification (group 1),greenhouse,ada18
 Adobe India,,,https://adobe.wd5.myworkdayjobs.com/external_experienced,,,,,,Verified live via resolve_new_companies.py,workday,adobe.wd5.myworkdayjobs.com/external_experienced
+Agoda,,,https://boards.greenhouse.io/agoda,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,agoda
+AiDASH,,,https://boards.greenhouse.io/aidashinc,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,aidashinc
+AiPrise,,,https://jobs.ashbyhq.com/aiprise,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,aiprise
+Airbnb,,,https://boards.greenhouse.io/airbnb,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,airbnb
+Airbyte,,,https://jobs.ashbyhq.com/airbyte,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",ashby,airbyte
 Airtable,,,https://boards.greenhouse.io/airtable,,,,,,Verified live via resolve_new_companies.py,greenhouse,airtable
+AltaML,,,https://jobs.lever.co/altaml,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",lever,altaml
+Andromeda Cluster,,,https://jobs.ashbyhq.com/andromeda,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,andromeda
 Anduril,,,https://boards.greenhouse.io/andurilindustries,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 1),greenhouse,andurilindustries
 Anthropic,,,https://boards.greenhouse.io/anthropic,,,,,,Verified live via resolve_new_companies.py,greenhouse,anthropic
 Arize AI,,,https://boards.greenhouse.io/arizeai,,,,,,Verified live via resolve_new_companies.py,greenhouse,arizeai
+Ashby,,,https://jobs.ashbyhq.com/ashby,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,ashby
 AssemblyAI,,,https://boards.greenhouse.io/assemblyai,,,,,,Verified live via resolve_new_companies.py,greenhouse,assemblyai
 Astronomer,,,https://jobs.ashbyhq.com/astronomer,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 2),ashby,astronomer
+Atla AI,,,https://atla.teamtailor.com/jobs,,,,,,Verified live via resolve_new_companies.py --retry-unresolved --brute-force (recovered during recheck - dropped from earlier manual merge),teamtailor,atla
+Augment Computing,,,https://boards.greenhouse.io/augmentcomputing,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",greenhouse,augmentcomputing
 Automattic,,,https://boards.greenhouse.io/automatticcareers,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 1),greenhouse,automatticcareers
+Axiom Zen,,,https://boards.greenhouse.io/axiom,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",greenhouse,axiom
 Baseten,,,https://jobs.ashbyhq.com/baseten,,,,,,Verified live via resolve_new_companies.py,ashby,baseten
+BenchSci,,,https://jobs.lever.co/benchsci,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",lever,benchsci
+Better Mortgage,,,https://jobs.ashbyhq.com/better-mortgage,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,better-mortgage
+Black Forest Labs,,,https://jobs.ashbyhq.com/black-forest-labs,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,black-forest-labs
+BlackRock,,,https://blackrock.wd1.myworkdayjobs.com/BlackRock_Professional,,,,,,Verified live via Claude-in-Chrome recheck (round 2),workday,blackrock.wd1.myworkdayjobs.com/BlackRock_Professional
 Bland AI,,,https://jobs.ashbyhq.com/bland,,,,,,Verified live via resolve_new_companies.py,ashby,bland
+BlueDot,,,https://jobs.ashbyhq.com/bluedot,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",ashby,bluedot
 Brex,,,https://boards.greenhouse.io/brex,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 1),greenhouse,brex
 BrowserStack,,,https://browserstack.wd3.myworkdayjobs.com/External,,,,,,Verified live via resolve_new_companies.py,workday,browserstack.wd3.myworkdayjobs.com/External
+Browserbase,,,https://jobs.ashbyhq.com/browserbase,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,browserbase
+Buffer,,,https://jobs.ashbyhq.com/buffer,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",ashby,buffer
 C3 AI,,,https://boards.greenhouse.io/c3ascend,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 1),greenhouse,c3ascend
+CRED,,,https://jobs.lever.co/cred,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (recovered during recheck audit - distinctive brand name, not a generic collision)",lever,cred
+Cadence Design Systems,,,https://cadence.wd1.myworkdayjobs.com/External_Careers,,,,,,Verified live via Claude-in-Chrome recheck (round 2),workday,cadence.wd1.myworkdayjobs.com/External_Careers
+Canonical,,,https://boards.greenhouse.io/canonical,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,canonical
+Canva,,,https://careers.smartrecruiters.com/canva,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",smartrecruiters,canva
 Cartesia,,,https://jobs.ashbyhq.com/cartesia,,,,,,Verified live via resolve_new_companies.py,ashby,cartesia
+Chainguard,,,https://boards.greenhouse.io/chainguard,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,chainguard
+Ciena,,,https://ciena.wd5.myworkdayjobs.com/Careers,,,,,,Verified live via WebSearch + manual verification (group 2),workday,ciena.wd5.myworkdayjobs.com/Careers
 Cisco India,,,https://cisco.wd5.myworkdayjobs.com/Cisco_Careers,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 3/4),workday,cisco.wd5.myworkdayjobs.com/Cisco_Careers
 ClickHouse,,,https://boards.greenhouse.io/clickhouse,,,,,,Verified live via resolve_new_companies.py,greenhouse,clickhouse
+Cloudera,,,https://cloudera.wd5.myworkdayjobs.com/External_Career,,,,,,Verified live via WebSearch + manual verification (group 2),workday,cloudera.wd5.myworkdayjobs.com/External_Career
+Cloudflare,,,https://boards.greenhouse.io/cloudflare,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,cloudflare
 Cockroach Labs,,,https://boards.greenhouse.io/cockroachlabs,,,,,,Verified live via resolve_new_companies.py,greenhouse,cockroachlabs
+CodeRabbit,,,https://jobs.ashbyhq.com/coderabbit,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,coderabbit
 Cognition AI,,,https://jobs.ashbyhq.com/cognition,,,,,,Verified live via resolve_new_companies.py,ashby,cognition
 Cohere,,,https://jobs.ashbyhq.com/cohere,,,,,,Verified live via resolve_new_companies.py,ashby,cohere
+Comet ML,,,https://boards.greenhouse.io/comet,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,comet
 Composio,,,https://jobs.ashbyhq.com/composio,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 3/4),ashby,composio
 Confluent,,,https://jobs.ashbyhq.com/confluent,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 1),ashby,confluent
+Contra,,,https://jobs.ashbyhq.com/contra,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,contra
+CoreWeave,,,https://boards.greenhouse.io/coreweave,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,coreweave
 CrewAI,,,https://apply.workable.com/crewai,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 1),workable,crewai
+Crusoe,,,https://jobs.ashbyhq.com/crusoe,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",ashby,crusoe
+Cursor,,,https://jobs.ashbyhq.com/cursor,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",ashby,cursor
 DataRobot,,,https://datarobot.wd1.myworkdayjobs.com/DataRobot_External_Careers,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 1),workday,datarobot.wd1.myworkdayjobs.com/DataRobot_External_Careers
 Databricks,,,https://boards.greenhouse.io/databricks,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 1),greenhouse,databricks
+Datadog,,,https://boards.greenhouse.io/datadog,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,datadog
+Decagon,,,https://jobs.ashbyhq.com/decagon,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,decagon
 Decart,,,https://jobs.ashbyhq.com/decart-ai,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 3/4),ashby,decart-ai
+Deel,,,https://jobs.ashbyhq.com/deel,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,deel
+Deep Genomics,,,https://jobs.lever.co/deepgenomics,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",lever,deepgenomics
+DeepL,,,https://jobs.ashbyhq.com/deepl,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",ashby,deepl
 Deepgram,,,https://jobs.ashbyhq.com/deepgram,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 1),ashby,deepgram
 DuckDuckGo,,,https://jobs.ashbyhq.com/duck-duck-go,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 1),ashby,duck-duck-go
 Dust,,,https://jobs.ashbyhq.com/dust,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 1),ashby,dust
 E2B,,,https://jobs.ashbyhq.com/e2b,,,,,,Verified live via resolve_new_companies.py,ashby,e2b
+EXL,,,https://fa-ewjt-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2/jobs,,,,,,Verified live via Claude-in-Chrome browser check (group 4),oracle_recruiting,fa-ewjt-saasfaprod1.fa.ocs.oraclecloud.com|CX_2
 Elastic,,,https://boards.greenhouse.io/elastic,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 1),greenhouse,elastic
 ElevenLabs,,,https://jobs.ashbyhq.com/elevenlabs,,,,,,Verified live via resolve_new_companies.py,ashby,elevenlabs
+Elicit,,,https://jobs.ashbyhq.com/elicit,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,elicit
+Ema Unlimited,,,https://jobs.ashbyhq.com/ema,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,ema
+Emergence,,,https://jobs.ashbyhq.com/emergence,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,emergence
 Exa,,,https://jobs.ashbyhq.com/exa,,,,,,Verified live via resolve_new_companies.py,ashby,exa
+Expedia Group,,,https://expedia.wd108.myworkdayjobs.com/search,,,,,,Verified live via Claude-in-Chrome recheck (round 2),workday,expedia.wd108.myworkdayjobs.com/search
+F5,,,https://ffive.wd5.myworkdayjobs.com/f5jobs,,,,,,Verified live via WebSearch + manual verification (group 3),workday,ffive.wd5.myworkdayjobs.com/f5jobs
+Factory,,,https://jobs.ashbyhq.com/factory,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,factory
 Fi Money,,,https://jobs.lever.co/epifi,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 2),lever,epifi
 Fiddler AI,,,https://jobs.ashbyhq.com/fiddler-ai,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 1),ashby,fiddler-ai
+Fidelity International,,,https://fil.wd3.myworkdayjobs.com/001,,,,,,Verified live via Claude-in-Chrome recheck (round 2),workday,fil.wd3.myworkdayjobs.com/001
+Fidelity Investments,,,https://fmr.wd1.myworkdayjobs.com/fidelitycareers,,,,,,Verified live via Claude-in-Chrome recheck (round 2),workday,fmr.wd1.myworkdayjobs.com/fidelitycareers
 Figure AI,,,https://boards.greenhouse.io/figureai,,,,,,Verified live via resolve_new_companies.py,greenhouse,figureai
 Firecrawl,,,https://jobs.ashbyhq.com/firecrawl,,,,,,Verified live via resolve_new_companies.py,ashby,firecrawl
+Fireworks AI,,,https://jobs.ashbyhq.com/fireworks,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,fireworks
+FiscalNote,,,https://jobs.lever.co/fiscalnote,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",lever,fiscalnote
+Fiserv,,,https://fiserv.wd5.myworkdayjobs.com/EXT,,,,,,Verified live via WebSearch + manual verification (group 3),workday,fiserv.wd5.myworkdayjobs.com/EXT
+Fly.io,,,https://flyio.bamboohr.com/careers,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (recovered during recheck audit - distinctive brand name, not a generic collision)",bamboohr,flyio
 Fractal Analytics,,,https://fractal.wd1.myworkdayjobs.com/Careers,,,,,,Verified live via resolve_new_companies.py,workday,fractal.wd1.myworkdayjobs.com/Careers
 Freshworks,,,https://careers.smartrecruiters.com/Freshworks,,,,,,Verified live via resolve_new_companies.py,smartrecruiters,Freshworks
+FurtherAI,,,https://jobs.ashbyhq.com/furtherai,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,furtherai
+FutureFit AI,,,https://jobs.ashbyhq.com/futurefitai,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,futurefitai
+GE Aerospace,,,https://geaerospace.wd5.myworkdayjobs.com/GE_ExternalSite,,,,,,Verified live via Claude-in-Chrome browser check (group 4),workday,geaerospace.wd5.myworkdayjobs.com/GE_ExternalSite
 GE Healthcare India,,,https://gehc.wd5.myworkdayjobs.com/GEHC_ExternalSite,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 3/4),workday,gehc.wd5.myworkdayjobs.com/GEHC_ExternalSite
+Galileo AI,,,https://boards.greenhouse.io/galileo,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",greenhouse,galileo
+Gartner,,,https://gartner.wd5.myworkdayjobs.com/EXT,,,,,,Verified live via Claude-in-Chrome browser check (group 4),workday,gartner.wd5.myworkdayjobs.com/EXT
+Genesys,,,https://genesys.wd1.myworkdayjobs.com/Genesys,,,,,,Verified live via Claude-in-Chrome browser check (group 4),workday,genesys.wd1.myworkdayjobs.com/Genesys
+Genspark,,,https://jobs.ashbyhq.com/genspark,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,genspark
+GitLab,,,https://boards.greenhouse.io/gitlab,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,gitlab
 Glean,,,https://boards.greenhouse.io/gleanwork,,,,,,Verified live via resolve_new_companies.py,greenhouse,gleanwork
 Grafana Labs,,,https://boards.greenhouse.io/grafanalabs,,,,,,Verified live via resolve_new_companies.py,greenhouse,grafanalabs
+Graphcore,,,https://boards.greenhouse.io/graphcore,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",greenhouse,graphcore
 Groww,,,https://boards.greenhouse.io/groww,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 2),greenhouse,groww
+HERE Technologies,,,https://boards.greenhouse.io/hereio,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",greenhouse,hereio
+HPE,,,https://hpe.wd5.myworkdayjobs.com/Jobsathpe,,,,,,Verified live via Claude-in-Chrome browser check (group 4),workday,hpe.wd5.myworkdayjobs.com/Jobsathpe
+Harness,,,https://boards.greenhouse.io/harnessinc,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,harnessinc
 Harvey,,,https://jobs.ashbyhq.com/harvey,,,,,,Verified live via resolve_new_companies.py,ashby,harvey
 Hebbia,,,https://jobs.ashbyhq.com/hebbia-ai,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 1),ashby,hebbia-ai
+Helsing,,,https://boards.greenhouse.io/helsing,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,helsing
 Hex,,,https://jobs.ashbyhq.com/hex,,,,,,Verified live via resolve_new_companies.py,ashby,hex
 Hugging Face,,,https://apply.workable.com/huggingface,,,,,,Verified live via resolve_new_companies.py,workable,huggingface
 InMobi,,,https://boards.greenhouse.io/inmobi,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 3/4),greenhouse,inmobi
 Insitro,,,https://jobs.ashbyhq.com/insitro,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 2),ashby,insitro
+Invisible Technologies,,,https://boards.greenhouse.io/invisible,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,invisible
+JetBrains,,,https://boards.greenhouse.io/jetbrains,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",greenhouse,jetbrains
+Kong,,,https://jobs.ashbyhq.com/kong,,,,,,Verified live via Claude-in-Chrome recheck (round 2),ashby,kong
 Kraken,,,https://jobs.lever.co/kraken,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 1),lever,kraken
+Labelbox,,,https://boards.greenhouse.io/labelbox,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,labelbox
 LangChain,,,https://jobs.ashbyhq.com/langchain,,,,,,Verified live via resolve_new_companies.py,ashby,langchain
 Langfuse,,,https://jobs.ashbyhq.com/langfuse,,,,,,Verified live via resolve_new_companies.py,ashby,langfuse
+LaunchDarkly,,,https://boards.greenhouse.io/launchdarkly,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,launchdarkly
+Lazer Technologies,,,https://jobs.ashbyhq.com/lazer,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,lazer
+League,,,https://boards.greenhouse.io/leagueinc,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,leagueinc
 Letta,,,https://jobs.ashbyhq.com/letta,,,,,,Verified live via resolve_new_companies.py,ashby,letta
 Linear,,,https://jobs.ashbyhq.com/linear,,,,,,Verified live via resolve_new_companies.py,ashby,linear
 LlamaIndex,,,https://jobs.ashbyhq.com/llamaindex,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 1),ashby,llamaindex
 Locus,,,https://boards.greenhouse.io/locusrobotics,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 2),greenhouse,locusrobotics
+Lovable,,,https://jobs.ashbyhq.com/lovable,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,lovable
 Magic,,,https://jobs.ashbyhq.com/magic.dev,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 1),ashby,magic.dev
+Mastercard,,,https://mastercard.wd1.myworkdayjobs.com/CorporateCareers,,,,,,Verified live via Claude-in-Chrome browser check (group 5),workday,mastercard.wd1.myworkdayjobs.com/CorporateCareers
 Mastra,,,https://jobs.ashbyhq.com/mastra,,,,,,Verified live via resolve_new_companies.py,ashby,mastra
+Mechanical Orchard,,,https://jobs.lever.co/mechanicalorchard,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",lever,mechanicalorchard
 Meesho,,,https://jobs.lever.co/meesho,,,,,,Verified live via resolve_new_companies.py,lever,meesho
 Mem0,,,https://jobs.ashbyhq.com/mem0,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 1),ashby,mem0
+Mercor,,,https://jobs.ashbyhq.com/mercor,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,mercor
 Mercury,,,https://boards.greenhouse.io/mercury,,,,,,Verified live via resolve_new_companies.py,greenhouse,mercury
+Milvus (Zilliz),,,https://jobs.lever.co/zilliz,,,,,,Verified live via Claude-in-Chrome browser check (group 5),lever,zilliz
 Mintlify,,,https://jobs.ashbyhq.com/mintlify,,,,,,Verified live via resolve_new_companies.py,ashby,mintlify
 Mistral AI,,,https://jobs.lever.co/mistral,,,,,,Verified live via resolve_new_companies.py,lever,mistral
 Modal,,,https://jobs.ashbyhq.com/modal,,,,,,Verified live via resolve_new_companies.py,ashby,modal
 MongoDB,,,https://boards.greenhouse.io/mongodb,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 1),greenhouse,mongodb
+MotherDuck,,,https://jobs.ashbyhq.com/motherduck,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,motherduck
+NICE,,,https://boards.greenhouse.io/nice,,,,,,Verified live via Claude-in-Chrome recheck (round 2),greenhouse,nice
+Nagarro,,,https://careers.smartrecruiters.com/nagarro1,,,,,,Verified live via Claude-in-Chrome browser check (group 5),smartrecruiters,nagarro1
+Navi,,,https://jobs.ashbyhq.com/navi,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (recovered during recheck audit - distinctive brand name, not a generic collision)",ashby,navi
 Neon,,,https://jobs.ashbyhq.com/neon,,,,,,Verified live via resolve_new_companies.py,ashby,neon
 Netradyne,,,https://boards.greenhouse.io/netradyne,,,,,,Verified live via resolve_new_companies.py,greenhouse,netradyne
+New Relic,,,https://boards.greenhouse.io/newrelic,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,newrelic
+Notion,,,https://jobs.ashbyhq.com/notion,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",ashby,notion
 Nuro,,,https://boards.greenhouse.io/nuro,,,,,,Verified live via resolve_new_companies.py,greenhouse,nuro
 Nvidia India,,,https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite,,,,,,Verified live via resolve_new_companies.py,workday,nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite
 Observe.AI,,,https://boards.greenhouse.io/observeai,,,,,,Verified live via resolve_new_companies.py,greenhouse,observeai
+OpenAI,,,https://jobs.ashbyhq.com/openai,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",ashby,openai
 OpenRouter,,,https://jobs.ashbyhq.com/openrouter,,,,,,Verified live via resolve_new_companies.py,ashby,openrouter
+Oracle,,,https://eeho.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_45001/jobs,,,,,,Verified live via Claude-in-Chrome browser check (group 5),oracle_recruiting,eeho.fa.us2.oraclecloud.com|CX_45001
+Oyster HR,,,https://jobs.ashbyhq.com/oyster,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",ashby,oyster
 Palantir,,,https://jobs.lever.co/palantir,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 1),lever,palantir
+Palo Alto Networks,,,https://paloaltonetworks.wd5.myworkdayjobs.com/panwexternalcareers,,,,,,Verified live via Claude-in-Chrome browser check (group 5),workday,paloaltonetworks.wd5.myworkdayjobs.com/panwexternalcareers
 PathAI,,,https://boards.greenhouse.io/pathai,,,,,,Verified live via resolve_new_companies.py,greenhouse,pathai
-Philips Innovation Campus,,,https://philips.wd3.myworkdayjobs.com/jobs-and-careers,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 3/4),workday,philips.wd3.myworkdayjobs.com/jobs-and-careers
+PayPal,,,https://paypal.wd1.myworkdayjobs.com/jobs,,,,,,Verified live via Claude-in-Chrome browser check (group 5),workday,paypal.wd1.myworkdayjobs.com/jobs
+PayU,,,https://jobs.lever.co/payugpo,,,,,,Verified live via Claude-in-Chrome browser check (group 6),lever,payugpo
+Paytm,,,https://jobs.lever.co/paytm,,,,,,Verified live via resolve_new_companies.py --retry-unresolved --brute-force (re-verified after collision review),lever,paytm
+Perplexity,,,https://jobs.ashbyhq.com/perplexity,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,perplexity
+Philips,,,https://philips.wd3.myworkdayjobs.com/jobs-and-careers,,,,,,Verified live via Claude-in-Chrome browser check (group 5),workday,philips.wd3.myworkdayjobs.com/jobs-and-careers
 PhonePe,,,https://boards.greenhouse.io/phonepe,,,,,,Verified live via resolve_new_companies.py,greenhouse,phonepe
+Photoroom,,,https://jobs.ashbyhq.com/photoroom,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",ashby,photoroom
+Physical Intelligence,,,https://jobs.ashbyhq.com/physicalintelligence,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",ashby,physicalintelligence
 Pika,,,https://jobs.ashbyhq.com/pika,,,,,,Verified live via resolve_new_companies.py,ashby,pika
 Pinecone,,,https://jobs.ashbyhq.com/pinecone,,,,,,Verified live via resolve_new_companies.py,ashby,pinecone
 Plaid,,,https://jobs.ashbyhq.com/plaid,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 1),ashby,plaid
 PlanetScale,,,https://boards.greenhouse.io/planetscale,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 1),greenhouse,planetscale
 Poolside,,,https://jobs.ashbyhq.com/poolside,,,,,,Verified live via resolve_new_companies.py,ashby,poolside
 Porter,,,https://jobs.lever.co/porter,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 2),lever,porter
+PostHog,,,https://jobs.ashbyhq.com/posthog,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,posthog
 Postman,,,https://boards.greenhouse.io/postman,,,,,,Verified live via resolve_new_companies.py,greenhouse,postman
+Pragmatike,,,https://jobs.ashbyhq.com/pragmatike,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,pragmatike
+Prefect,,,https://jobs.ashbyhq.com/prefect,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",ashby,prefect
 Qdrant,,,https://jobs.ashbyhq.com/qdrant.tech,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 1),ashby,qdrant.tech
+Qualtrics,,,https://boards.greenhouse.io/qualtrics,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,qualtrics
+R1 RCM,,,https://r1rcm.wd1.myworkdayjobs.com/R1RCM,,,,,,Verified live via Claude-in-Chrome recheck (round 2),workday,r1rcm.wd1.myworkdayjobs.com/R1RCM
 Rad AI,,,https://jobs.ashbyhq.com/radai,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 2),ashby,radai
 Railway,,,https://jobs.ashbyhq.com/railway,,,,,,Verified live via resolve_new_companies.py,ashby,railway
 Ramp,,,https://jobs.ashbyhq.com/ramp,,,,,,Verified live via resolve_new_companies.py,ashby,ramp
 Razorpay,,,https://boards.greenhouse.io/razorpaysoftwareprivatelimited,,,,,,Verified live via resolve_new_companies.py,greenhouse,razorpaysoftwareprivatelimited
 Recursion,,,https://boards.greenhouse.io/recursionpharmaceuticals,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 1),greenhouse,recursionpharmaceuticals
+Redis,,,https://jobs.ashbyhq.com/redis,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",ashby,redis
+Reducto,,,https://jobs.ashbyhq.com/reducto,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,reducto
 Reflection AI,,,https://jobs.ashbyhq.com/reflectionai,,,,,,Verified live via resolve_new_companies.py,ashby,reflectionai
+Relay Financial,,,https://jobs.lever.co/relay,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",lever,relay
+Remote,,,https://boards.greenhouse.io/remote,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,remote
 Render,,,https://jobs.ashbyhq.com/render,,,,,,Verified live via resolve_new_companies.py,ashby,render
+Replit,,,https://jobs.ashbyhq.com/replit,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",ashby,replit
+RingCentral,,,https://ringcentral.wd1.myworkdayjobs.com/RingCentral_Careers,,,,,,Verified live via Claude-in-Chrome browser check (group 6),workday,ringcentral.wd1.myworkdayjobs.com/RingCentral_Careers
+Rogo,,,https://jobs.ashbyhq.com/rogo,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,rogo
+Rubrik,,,https://boards.greenhouse.io/rubrik,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,rubrik
 Runway,,,https://jobs.ashbyhq.com/runway-ml,,,,,,Verified live via resolve_new_companies.py,ashby,runway-ml
+S&P Global,,,https://spgi.wd5.myworkdayjobs.com/SPGI_Careers,,,,,,Verified live via Claude-in-Chrome recheck (round 2),workday,spgi.wd5.myworkdayjobs.com/SPGI_Careers
 Salesforce India,,,https://salesforce.wd12.myworkdayjobs.com/External_Career_Site,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 3/4),workday,salesforce.wd12.myworkdayjobs.com/External_Career_Site
 Samsung R&D India,,,https://sec.wd3.myworkdayjobs.com/Samsung_Careers,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 3/4),workday,sec.wd3.myworkdayjobs.com/Samsung_Careers
 SandboxAQ,,,https://jobs.ashbyhq.com/sandboxaq,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 2),ashby,sandboxaq
+Sanity,,,https://jobs.ashbyhq.com/sanity,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",ashby,sanity
 Sarvam AI,,,https://jobs.ashbyhq.com/sarvam,,,,,,Verified live via resolve_new_companies.py,ashby,sarvam
 Scale AI,,,https://boards.greenhouse.io/scaleai,,,,,,Verified live via resolve_new_companies.py,greenhouse,scaleai
 Scaler,,,https://jobs.ashbyhq.com/scaler,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 3/4),ashby,scaler
 Sentry,,,https://jobs.ashbyhq.com/sentry,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 1),ashby,sentry
 ServiceNow India,,,https://careers.smartrecruiters.com/ServiceNow,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 3/4),smartrecruiters,ServiceNow
+Shield AI,,,https://boards.greenhouse.io/shield,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,shield
+Shipsy,,,https://careers.smartrecruiters.com/Shipsy,,,,,,"Verified live via Claude-in-Chrome recheck (round 2, distinctive brand name not a generic collision)",smartrecruiters,Shipsy
 Siemens Healthineers India,,,https://onehealthineers.wd3.myworkdayjobs.com/SHSJB,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 3/4),workday,onehealthineers.wd3.myworkdayjobs.com/SHSJB
 Sierra,,,https://jobs.ashbyhq.com/Sierra,,,,,,Verified live via resolve_new_companies.py,ashby,Sierra
+SingleStore,,,https://boards.greenhouse.io/singlestore,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,singlestore
+Skydio,,,https://jobs.ashbyhq.com/skydio,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",ashby,skydio
 Slice,,,https://boards.greenhouse.io/slice,,,,,,Verified live via resolve_new_companies.py,greenhouse,slice
+Snorkel AI,,,https://boards.greenhouse.io/snorkelai,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,snorkelai
 Snowflake,,,https://jobs.ashbyhq.com/snowflake,,,,,,Verified live via resolve_new_companies.py,ashby,snowflake
+Sonar,,,https://jobs.lever.co/sonarsource,,,,,,Verified live via Claude-in-Chrome browser check (group 6),lever,sonarsource
 Sourcegraph,,,https://boards.greenhouse.io/sourcegraph91,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 1),greenhouse,sourcegraph91
+Speechify,,,https://boards.greenhouse.io/speechify,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,speechify
+SpotDraft,,,https://jobs.ashbyhq.com/spotdraft,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,spotdraft
+Sprinklr,,,https://sprinklr.wd1.myworkdayjobs.com/careers,,,,,,Verified live via Claude-in-Chrome browser check (group 6),workday,sprinklr.wd1.myworkdayjobs.com/careers
+Stable,,,https://jobs.ashbyhq.com/stable,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,stable
+Starburst,,,https://boards.greenhouse.io/starburst,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,starburst
+StreamNative,,,https://boards.greenhouse.io/streamnative,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,streamnative
 Stripe,,,https://boards.greenhouse.io/stripe,,,,,,Verified live via resolve_new_companies.py,greenhouse,stripe
 Suno,,,https://jobs.ashbyhq.com/suno,,,,,,Verified live via resolve_new_companies.py,ashby,suno
+Supabase,,,https://jobs.ashbyhq.com/supabase,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,supabase
+Synthesia,,,https://jobs.ashbyhq.com/synthesia,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",ashby,synthesia
 Tailscale,,,https://boards.greenhouse.io/tailscale,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 1),greenhouse,tailscale
+Target India,,,https://target.wd5.myworkdayjobs.com/targetcareers,,,,,,Verified live via Claude-in-Chrome browser check (group 6),workday,target.wd5.myworkdayjobs.com/targetcareers
 Tavus,,,https://jobs.ashbyhq.com/tavus,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 2),ashby,tavus
+Temporal,,,https://jobs.ashbyhq.com/temporal,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",ashby,temporal
 Tempus AI,,,https://tempus.wd5.myworkdayjobs.com/Tempus_Careers,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 1),workday,tempus.wd5.myworkdayjobs.com/Tempus_Careers
+Thoughtworks,,,https://boards.greenhouse.io/thoughtworks,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",greenhouse,thoughtworks
+Tiger Analytics,,,https://jobs.ashbyhq.com/tiger,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",ashby,tiger
 TigerGraph India,,,https://boards.greenhouse.io/tigergraph,,,,,,Verified live via resolve_new_companies.py,greenhouse,tigergraph
 Together AI,,,https://boards.greenhouse.io/togetherai,,,,,,Verified live via resolve_new_companies.py,greenhouse,togetherai
+Toloka AI,,,https://boards.greenhouse.io/toloka,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,toloka
 Trigger.dev,,,https://jobs.ashbyhq.com/triggerdev,,,,,,Verified live via resolve_new_companies.py,ashby,triggerdev
+Turing Labs,,,https://boards.greenhouse.io/turing,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",greenhouse,turing
+Twilio,,,https://boards.greenhouse.io/twilio,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,twilio
+Uniphore,,,https://uniphore.wd503.myworkdayjobs.com/Uniphore,,,,,,Verified live via Claude-in-Chrome browser check (group 6),workday,uniphore.wd503.myworkdayjobs.com/Uniphore
 Unstructured,,,https://jobs.ashbyhq.com/unstructured,,,,,,Verified live via resolve_new_companies.py,ashby,unstructured
+Urban Company,,,https://urban.bamboohr.com/careers,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",bamboohr,urban
+VAST Data,,,https://boards.greenhouse.io/vast,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,vast
 VMware India,,,https://broadcom.wd1.myworkdayjobs.com/External_Career,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 3/4),workday,broadcom.wd1.myworkdayjobs.com/External_Career
+Vannevar Labs,,,https://boards.greenhouse.io/vannevarlabs,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,vannevarlabs
 Vapi,,,https://jobs.ashbyhq.com/vapi,,,,,,Verified live via resolve_new_companies.py,ashby,vapi
-Weights & Biases,,,https://boards.greenhouse.io/coreweave,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 3/4),greenhouse,coreweave
+Vercel,,,https://boards.greenhouse.io/vercel,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,vercel
+Waabi,,,https://jobs.lever.co/waabi,,,,,,"Verified live via resolve_new_companies.py --retry-unresolved --brute-force (sure-shot filtered: nonzero jobs, identifier len>=5, no cross-collision, SMB-tier ATS required >=15 jobs)",lever,waabi
+Walmart Global Tech,,,https://walmart.wd504.myworkdayjobs.com/WalmartExternal,,,,,,Verified live via Claude-in-Chrome recheck (round 2),workday,walmart.wd504.myworkdayjobs.com/WalmartExternal
+Wayve,,,https://boards.greenhouse.io/wayve,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,wayve
+Weaviate,,,https://jobs.ashbyhq.com/weaviate,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,weaviate
+Weights & Biases,,,,,,,,,"Bad identifier removed 2026-08-05: previous entry pointed at greenhouse/coreweave (CoreWeave's board, not W&B's) - mislabeled jobs. wandb/weightsandbiases/weights-and-biases don't resolve on greenhouse/lever/ashby; needs manual lookup.",,
 Wiz,,,https://boards.greenhouse.io/wizinc,,,,,,Verified live via resolve_new_companies.py,greenhouse,wizinc
 Writer,,,https://jobs.ashbyhq.com/writer,,,,,,Verified live via resolve_new_companies.py,ashby,writer
 Zapier,,,https://jobs.ashbyhq.com/zapier,,,,,,Verified live via resolve_new_companies.py,ashby,zapier
+ZenRows,,,https://boards.greenhouse.io/zenrows,,,,,,Verified live via resolve_new_companies.py --new-only,greenhouse,zenrows
+Zensors,,,https://jobs.ashbyhq.com/zensors,,,,,,Verified live via resolve_new_companies.py --new-only,ashby,zensors
 Zeta,,,https://jobs.lever.co/zeta,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 2),lever,zeta
 Zipline,,,https://boards.greenhouse.io/flyzipline,,,,,,Verified live via resolve_new_companies.py + WebSearch fork (batch 2),greenhouse,flyzipline
+Zomato,,,https://careers.smartrecruiters.com/Zomato1,,,,,,Verified live via Claude-in-Chrome browser check (group 6),smartrecruiters,Zomato1
+Zoom,,,https://zoom.wd5.myworkdayjobs.com/Zoom,,,,,,Verified live via Claude-in-Chrome browser check (group 6),workday,zoom.wd5.myworkdayjobs.com/Zoom
+n8n,,,https://jobs.ashbyhq.com/n8n,,,,,,Verified live via resolve_new_companies.py --retry-unresolved --brute-force (re-verified after collision review),ashby,n8n
 xAI,,,https://boards.greenhouse.io/xai,,,,,,Verified live via resolve_new_companies.py,greenhouse,xai
