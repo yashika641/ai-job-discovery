@@ -6,7 +6,7 @@ profile:
   # Jobs whose description asks for at most this many years of experience
   # are ranked favorably; jobs asking for more score lower. Jobs that don't
   # mention YOE at all are scored neutrally either way.
-  max_years_experience: 1
+  max_years_experience: 3
   preferred_countries:
     - India
     - Remote
