@@ -43,6 +43,11 @@ class Job:
     is_new: bool = True
     required_years_experience: int | None = None  # extracted from text; None if not mentioned
     has_stack_overlap: bool = False               # matched >=1 profile.preferred_keywords
+    # Skills/technologies the JD actually asks for, most -> least important,
+    # as extracted by Gemini (see gemini_extractor.py). Empty until that
+    # step runs (or if it's disabled/fails), in which case ranking.py falls
+    # back to a plain substring scan of the job text.
+    jd_keywords: list[str] = field(default_factory=list)
 
     def searchable_text(self) -> str:
         return f"{self.title}\n{self.location}\n{self.description}".lower()

@@ -48,9 +48,9 @@ def render_markdown(data: ReportData) -> str:
             [
                 f"## Other jobs worth looking at ({len(data.worth_looking_at)})",
                 "",
-                "New jobs that matched your target roles but didn't qualify for the top "
-                "picks above — over-experienced, on-site, no direct stack overlap, or just "
-                "ranked lower. Reason noted per job:",
+                "Every other new job that passed the skills filter this run, ranked by "
+                "score — didn't clear the recommendation threshold, isn't in a qualifying "
+                "location, or has no direct stack overlap. Reason noted per job:",
                 "",
             ]
         )

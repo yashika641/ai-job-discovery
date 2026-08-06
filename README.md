@@ -87,19 +87,30 @@ proprietary hiring portal or an ATS this project doesn't have an adapter for
 2. Pulls jobs from RemoteOK's public API, We Work Remotely's RSS feed,
    Himalayas' public search API, and Jobicy's public API (Data Science &
    Analytics industry filter).
-3. Filters to AI/ML engineering roles only (see `config/config.yaml`).
+3. Filters down to what's actually worth sending to Gemini, in order:
+   drops obviously-wrong functions (marketing/sales/HR/... and internships,
+   see `config/config.yaml`), then hard-drops anything requiring more than
+   `profile.max_years_experience_hard_limit` years, then hard-drops
+   anything that's neither India/worldwide remote nor on-site/hybrid in a
+   configured hub city (Gurgaon/Noida by default).
 4. Dedupes against everything seen before, and against jobs you've marked as
    applied — nothing is ever recommended twice.
-5. Ranks every job 1-5 stars based on title match, tech-stack overlap,
-   remote/country fit, and years-of-experience fit. Remote, real stack
-   overlap, and being within `profile.max_years_experience` are *hard*
-   requirements for the Top N Recommendations — a strong title match alone
-   can't carry an over-experienced or on-site job into the main list.
-6. Writes an HTML + Markdown report to `reports/`, and emails the top
-   recommendations to you — plus a collapsible "Other jobs worth looking
-   at" section for new jobs that matched your target roles but didn't
-   qualify for the main list (over-experienced, on-site, no direct stack
-   overlap, or just ranked lower), each with the specific reason noted.
+5. Sends each brand-new job's JD to Gemini (batched) to extract the actual
+   skills/technologies it asks for, ranked by importance — see
+   `gemini_extractor.py`. Falls back to a plain keyword scan if
+   `GEMINI_API_KEY` isn't set or a request fails.
+6. Ranks every job 1-5 stars based on title match, skill overlap (your
+   `profile.preferred_keywords` matched against the extracted JD skills,
+   weighted by their importance), remote/country fit, and
+   years-of-experience fit. Any job with zero skill overlap is dropped —
+   that's the sole relevance gate; title is never used to include or
+   exclude a job.
+7. Writes an HTML + Markdown report to `reports/`, and emails every new job
+   that passed the filters above, ranked by score — jobs at or above
+   `email.min_score_for_recommendation` land in "Top Recommendations",
+   everything else in a collapsible "Other jobs worth looking at" section,
+   annotated with why it didn't clear the bar. No count caps on either
+   section.
 
 ## Project layout
 
@@ -110,9 +121,10 @@ data/jobscraper.db           SQLite state: companies, jobs, applied_jobs, daily_
 src/jobscraper/
   ats/                       One parser per ATS provider + detect.py (sniffs career pages) + generic_html.py fallback
   sources/                   RemoteOK + We Work Remotely + Himalayas + Jobicy
-  filtering.py               Include/exclude role & keyword rules
+  filtering.py                Categorical exclude (function/internship), not a relevance filter
+  gemini_extractor.py         Gemini JD -> ranked skill list extraction (batched)
   dedupe.py                  Hashing + previously-seen/applied checks
-  ranking.py                 1-5 star relevance scoring
+  ranking.py                 1-5 star relevance scoring + skill matching
   report/                    Markdown + HTML (Jinja2) report rendering
   email_sender.py            Gmail SMTP sending
   pipeline.py                Orchestrates one full daily run
@@ -141,9 +153,16 @@ tests/                       pytest suite with fixtures for every parser
    - Copy `.env.example` to `.env` and fill in `EMAIL_SENDER` /
      `EMAIL_APP_PASSWORD`. `.env` is gitignored — never commit it.
 
+2b. **Gemini API key** (for JD skill extraction):
+   - Get a key at https://aistudio.google.com/apikey.
+   - Add it to `.env` as `GEMINI_API_KEY`. If left unset, the pipeline logs
+     it and falls back to a plain keyword scan instead of failing — see
+     `gemini.enabled` in `config/config.yaml`.
+
 3. **Review `config/config.yaml`**: preferred countries, remote preference,
-   tech-stack keywords, role include/exclude lists, and the email recipient
-   all live here.
+   your actual skill set (`profile.preferred_keywords` — this is what JD
+   skills are matched against), experience ceiling, onsite hub cities, and
+   the email recipient all live here.
 
 4. **Run it**:
    ```
@@ -206,6 +225,7 @@ tests/                       pytest suite with fixtures for every parser
 2. In the repo's Settings → Secrets and variables → Actions, add:
    - `EMAIL_SENDER`
    - `EMAIL_APP_PASSWORD`
+   - `GEMINI_API_KEY`
 3. The workflow (`.github/workflows/daily.yml`) runs every day at 08:00 IST
    (`30 2 * * *` UTC) and can also be triggered manually from the Actions tab
    (`workflow_dispatch`).
@@ -263,24 +283,49 @@ tests/                       pytest suite with fixtures for every parser
   page, ATS API call, RSS/API source — is wrapped so exceptions are logged
   and turned into an empty result; `pipeline.py` tracks
   `companies_failed` for visibility without stopping the other 214.
+- **Relevance is skill-based, not title-based.** A job's title is never used
+  to include or exclude it (`roles.include` is only search-time discovery
+  keywords + a small title-match scoring bonus) — the only relevance gate is
+  whether `ranking.has_stack_overlap` is true, i.e. whether the JD's
+  extracted skills overlap with `profile.preferred_keywords` at all.
+- **Experience and location are hard filters, applied *before* Gemini runs**
+  (`pipeline._within_experience_cap`, `pipeline._location_qualifies`), not
+  scoring inputs — this is deliberate: it keeps the (rate-limited, costs
+  money) Gemini extraction step from ever running on a job that couldn't
+  qualify anyway. A job over `profile.max_years_experience_hard_limit`
+  (default 5) or outside India/worldwide-remote and outside
+  `profile.onsite_hub_cities` is dropped outright, before its JD is ever
+  sent anywhere.
+- **JD skills are extracted by Gemini, ranked by importance.**
+  `gemini_extractor.py` batches new jobs' JD text into one request per
+  batch and asks for each job's skills/technologies most → least emphasized
+  in the text. `ranking._match_skills` matches that ranked list against
+  `profile.preferred_keywords`, weighting a match on the JD's #1 skill more
+  than one buried at #10 (`ranking._importance_weight`). If extraction is
+  disabled, the API key is missing, or a request fails, ranking silently
+  falls back to a plain substring scan of the job text — a Gemini outage
+  never breaks the pipeline.
 - **Ranking is a transparent weighted score**, not a black box: title match
-  (0-40), tech-stack overlap (0-25), remote fit (0-15), country fit (0-10),
+  (0-40), skill overlap (0-25), remote fit (0-15), country fit (0-10),
   YOE fit (0-10) → mapped to 1-5 stars. YOE fit extracts the minimum years
   of experience mentioned in the job text (the lower bound for a range like
   "3-5 years") and compares it against `profile.max_years_experience`
-  (default 3): at or under that threshold scores favorably (10/10), over it
-  scores low (2/10), and no YOE mentioned at all is neutral (5/10) — it's
-  not penalized just because it wasn't stated. The `rank_reason` string
-  surfaces which factors fired, and the "why it matches" field in the email
-  is built directly from it.
-- **The weighted score alone isn't enough to reach the Top N Recommendations.**
-  A job with a strong title/stack match could still slip in despite requiring
-  8+ years of experience or being on-site, since YOE/remote are only worth
-  10-15 of 100 points. `pipeline._qualifies_for_recommendation` enforces
-  remote, real stack overlap, and the YOE ceiling as *hard* filters on top of
-  the star threshold — jobs that fail any of those go into "Other jobs worth
-  looking at" instead of the main list, each annotated with the specific
-  reason (`pipeline._not_recommended_reason`) rather than silently dropped.
+  (default 3, distinct from the hard `_hard_limit` filter above): at or
+  under that preferred threshold scores favorably (10/10), over it decays
+  on a gradient (2 points per year over, floored at 1) rather than dropping
+  straight to a flat low score, and no YOE mentioned at all is neutral
+  (5/10) — it's not penalized just because it wasn't stated. The
+  `rank_reason` string surfaces which factors fired, and the "why it
+  matches" field in the email is built directly from it.
+- **Every job that passes every filter is reported, ranked by score, with
+  no count cap.** `pipeline._qualifies_for_recommendation` is just a score
+  threshold (`email.min_score_for_recommendation`, default 70) — since
+  experience, location, and skill overlap were already hard-filtered
+  earlier in the pipeline, by the time a job is scored it has already
+  qualified on everything except how well it scores. Jobs below the
+  threshold land in "Other jobs worth looking at" instead of the main list,
+  each annotated with the score gap (`pipeline._not_recommended_reason`)
+  rather than silently dropped.
 
 ## Future extensibility (not implemented yet, designed for)
 

@@ -8,6 +8,7 @@ beautifulsoup4>=4.12
 lxml>=5.1
 feedparser>=6.0
 openpyxl>=3.1
+google-genai>=1.0   # Gemini API client, used by gemini_extractor.py for JD skill extraction
 
 # dev / test
 pytest>=8.0

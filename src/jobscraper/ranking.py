@@ -3,15 +3,24 @@ plus a short human-readable "why it matches" string for the email report.
 
 Weights:
     title match against target roles      0-40
-    preferred tech-stack keyword overlap  0-25
+    skill overlap (JD keywords x profile) 0-25
     remote fit                            0-15
     country/region fit                    0-10
     years-of-experience fit               0-10
 
-Note: YOE/remote/stack-overlap also feed *hard* filters in pipeline.py for
-what counts as a top recommendation (see _qualifies_for_recommendation) —
-the weighted score alone isn't enough to keep an over-experienced or
-on-site job out of the top picks if its title/stack match is strong.
+Skill overlap uses job.jd_keywords — a ranked (most -> least important)
+list extracted per-JD by gemini_extractor.py — matched against the
+candidate's profile.preferred_keywords, weighted so a match on the JD's #1
+skill counts for more than a match buried at #10. Falls back to a plain
+substring scan of the job text when jd_keywords is empty (extraction
+disabled, failed, or no description to extract from).
+
+Note: pipeline.py's _qualifies_for_recommendation additionally gates on
+this score crossing settings.email.min_score_for_recommendation. The
+experience and location hard filters run *before* ranking (see
+pipeline._within_experience_cap / _location_qualifies) — by the time a job
+reaches here it has already cleared both, so YOE below is a ranking signal
+only, not a second exclusion.
 """
 
 from __future__ import annotations
@@ -21,6 +30,7 @@ from dataclasses import dataclass
 
 from jobscraper.config import ProfileConfig, RolesConfig
 from jobscraper.models import Job
+from jobscraper.text_match import contains_term
 
 # Unit covers "years"/"year", the "yrs"/"yr" abbreviation, and the "YOE"
 # shorthand (word boundary at the end so it doesn't match inside a longer
@@ -52,11 +62,11 @@ def score_job(job: Job, profile: ProfileConfig, roles: RolesConfig) -> ScoreResu
         score += 40
         reasons.append(f'title matches "{matched_role}"')
 
-    matched_keywords = [kw for kw in profile.preferred_keywords if kw.lower() in text]
-    has_stack_overlap = bool(matched_keywords)
+    matched_skills = _match_skills(job, profile, text)
+    has_stack_overlap = bool(matched_skills)
     if has_stack_overlap:
-        score += min(25, 5 * len(matched_keywords))
-        shown = ", ".join(matched_keywords[:5])
+        score += min(25.0, sum(_importance_weight(rank) for _, rank in matched_skills))
+        shown = ", ".join(name for name, _ in matched_skills[:5])
         reasons.append(f"stack overlap: {shown}")
 
     if job.remote:
@@ -85,6 +95,40 @@ def score_job(job: Job, profile: ProfileConfig, roles: RolesConfig) -> ScoreResu
     stars = _score_to_stars(score)
     reason_text = "; ".join(reasons) if reasons else "General AI/ML role match"
     return ScoreResult(score, stars, reason_text, required_years, has_stack_overlap)
+
+
+def _match_skills(job: Job, profile: ProfileConfig, text: str) -> list[tuple[str, int]]:
+    """Returns (skill name, importance rank) pairs, rank 1 = most important.
+
+    Prefers job.jd_keywords — the Gemini-extracted, already
+    importance-ordered list — matching each one against the candidate's
+    preferred_keywords (either string containing the other, so "LLM" in the
+    profile matches a JD keyword like "LLM fine-tuning"). Falls back to a
+    plain substring scan of the job text, ranked by the profile list's own
+    order, when no JD keywords were extracted."""
+    if job.jd_keywords:
+        matched = []
+        for rank, jd_kw in enumerate(job.jd_keywords, start=1):
+            if any(
+                contains_term(pk, jd_kw) or contains_term(jd_kw, pk)
+                for pk in profile.preferred_keywords
+            ):
+                matched.append((jd_kw, rank))
+        return matched
+
+    return [
+        (kw, rank)
+        for rank, kw in enumerate(profile.preferred_keywords, start=1)
+        if contains_term(kw, text)
+    ]
+
+
+def _importance_weight(rank: int) -> float:
+    """Rank 1 (most important JD skill) is worth 5 points, decaying to a
+    floor of 1 point by rank 5+, so a handful of high-importance matches
+    outweighs a long tail of minor ones (overall overlap score still capped
+    at 25 in score_job)."""
+    return max(1.0, 6.0 - rank)
 
 
 def _score_to_stars(score: float) -> int:
@@ -117,10 +161,21 @@ def _extract_min_years_required(text: str) -> int | None:
     return None
 
 
+def extract_required_years(job: Job) -> int | None:
+    """Public wrapper used by pipeline.py's hard experience filter, which
+    runs before scoring — it needs the requirement independent of a full
+    score_job pass."""
+    return _extract_min_years_required(job.searchable_text())
+
+
 def _score_yoe(text: str, max_years_experience: int) -> tuple[float, str, int | None]:
-    """A job requiring at most `max_years_experience` (default 3) is scored
-    favorably; one requiring more is scored low. No YOE mentioned at all is
-    neutral — we can't tell either way, so it shouldn't be penalized."""
+    """A job requiring at most `max_years_experience` (default 3) gets full
+    marks. Beyond that the score decays on a gradient (2 points per year
+    over, floored at 1) rather than dropping straight to a flat low score —
+    a job needing 4 years should still outrank one needing 8. This is a
+    ranking signal only: YOE never excludes a job from filtering.py. No YOE
+    mentioned at all is neutral — we can't tell either way, so it shouldn't
+    be penalized."""
     required = _extract_min_years_required(text)
 
     if required is None:
@@ -133,8 +188,10 @@ def _score_yoe(text: str, max_years_experience: int) -> tuple[float, str, int | 
             required,
         )
 
+    excess = required - max_years_experience
+    score = max(1.0, 10.0 - 2.0 * excess)
     return (
-        2.0,
+        score,
         f"needs ~{required}+ yrs experience (above your {max_years_experience}-yr preference)",
         required,
     )

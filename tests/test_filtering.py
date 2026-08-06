@@ -14,8 +14,11 @@ def _job(title: str) -> Job:
     return Job(company_name="Acme", title=title, apply_url="https://acme.com/x", source="test")
 
 
-def test_matches_included_role():
-    assert is_relevant(_job("Senior AI Engineer"), ROLES) is True
+def test_keeps_job_regardless_of_title_when_not_excluded():
+    # Title/role is never the inclusion criterion -- only the categorical
+    # exclude list and internship gate can drop a job here.
+    assert is_relevant(_job("Forward Deployed Engineer"), ROLES) is True
+    assert is_relevant(_job("Software Development Engineer"), ROLES) is True
 
 
 def test_excludes_ignored_function_even_if_role_word_present():
@@ -31,11 +34,11 @@ def test_allows_internship_when_enabled():
     assert is_relevant(_job("AI Engineer Internship"), roles) is True
 
 
-def test_drops_unrelated_role():
+def test_drops_unrelated_function():
     assert is_relevant(_job("Frontend Developer"), ROLES) is False
 
 
-def test_filter_jobs_keeps_only_relevant():
-    jobs = [_job("AI Engineer"), _job("Sales Executive"), _job("ML Engineer")]
+def test_filter_jobs_drops_only_categorically_excluded():
+    jobs = [_job("AI Engineer"), _job("Sales Executive"), _job("Forward Deployed Engineer")]
     kept = filter_jobs(jobs, ROLES)
-    assert {j.title for j in kept} == {"AI Engineer", "ML Engineer"}
+    assert {j.title for j in kept} == {"AI Engineer", "Forward Deployed Engineer"}

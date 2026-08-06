@@ -10,15 +10,51 @@ from pydantic import BaseModel
 
 
 class ProfileConfig(BaseModel):
-    # Jobs requiring at most this many years of experience are ranked
-    # favorably; jobs requiring more score lower (see ranking._score_yoe).
+    # Jobs requiring at most this many years of experience score best;
+    # jobs requiring more (but still within max_years_experience_hard_limit)
+    # score lower on a gradient (see ranking._score_yoe) rather than being
+    # excluded outright.
     max_years_experience: int = 3
+    # Hard cutoff applied before a job is even sent to Gemini for skill
+    # extraction (see pipeline._within_experience_cap): jobs asking for more
+    # than this many years are dropped entirely. Jobs that don't mention YOE
+    # at all always pass this filter — silence isn't a red flag.
+    max_years_experience_hard_limit: int = 5
     preferred_countries: list[str] = []
     remote_preference: str = "soft"
+    # The candidate's actual skill set. Matched against each job's
+    # Gemini-extracted keywords (or, as a fallback, a plain substring scan
+    # of the job text) to decide relevance and score.
     preferred_keywords: list[str] = []
+    # A job must overlap on at least this many preferred_keywords (after
+    # skill matching) to be kept — the sole relevance gate; see pipeline.py.
+    min_skill_matches: int = 1
+    # On-site/hybrid jobs located in one of these cities qualify for
+    # recommendations even when not remote (see pipeline._location_qualifies).
+    onsite_hub_cities: list[str] = ["Gurgaon", "Gurugram", "Noida"]
+
+
+class GeminiConfig(BaseModel):
+    # Extracts each new job's actual required skills (ranked by importance)
+    # from its JD text via the Gemini API, so scoring can match against the
+    # candidate's real skill set instead of only a fixed keyword scan (see
+    # gemini_extractor.py). Runs only on jobs that already passed the
+    # experience and location hard filters, to keep API usage bounded.
+    enabled: bool = True
+    api_key_env_var: str = "GEMINI_API_KEY"
+    model: str = "gemini-2.0-flash"
+    # Number of job descriptions bundled into a single API request.
+    batch_size: int = 10
+
+    @property
+    def api_key(self) -> str | None:
+        return os.environ.get(self.api_key_env_var)
 
 
 class RolesConfig(BaseModel):
+    # Search-time discovery keywords (generic HTML career-page scraping,
+    # Himalayas query) and a title-match scoring bonus in ranking.py. NOT a
+    # relevance filter — filtering.py gates purely on skill overlap.
     include: list[str] = []
     exclude_keywords: list[str] = []
     include_internships: bool = False
@@ -59,9 +95,11 @@ class EmailConfig(BaseModel):
     sender_env_var: str = "EMAIL_SENDER"
     password_env_var: str = "EMAIL_APP_PASSWORD"
     recipient: str = ""
-    top_n_in_email: int = 20
-    min_stars_in_email: int = 3
-    worth_looking_at_limit: int = 30   # cap on the collapsible "other jobs" section
+    # Jobs scoring at or above this land in "Top Recommendations"; every
+    # other new job that passed the skills filter is still listed, in full
+    # and ranked by score, under "Other jobs worth looking at" — no count
+    # caps on either section.
+    min_score_for_recommendation: float = 70.0
 
     @property
     def sender(self) -> str | None:
@@ -91,6 +129,7 @@ class LoggingConfig(BaseModel):
 
 class Settings(BaseModel):
     profile: ProfileConfig = ProfileConfig()
+    gemini: GeminiConfig = GeminiConfig()
     roles: RolesConfig = RolesConfig()
     sources: SourcesConfig = SourcesConfig()
     http: HttpConfig = HttpConfig()

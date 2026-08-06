@@ -1,6 +1,14 @@
 from jobscraper.config import ProfileConfig, RolesConfig
 from jobscraper.models import Job
-from jobscraper.ranking import _extract_min_years_required, _score_yoe, cap_per_company, rank_jobs, score_job
+from jobscraper.ranking import (
+    _extract_min_years_required,
+    _match_skills,
+    _score_yoe,
+    cap_per_company,
+    extract_required_years,
+    rank_jobs,
+    score_job,
+)
 
 PROFILE = ProfileConfig(
     max_years_experience=3,
@@ -121,6 +129,14 @@ def test_yoe_exactly_at_threshold_is_still_favorable():
     assert required == 3
 
 
+def test_yoe_score_decays_on_a_gradient_rather_than_a_flat_drop():
+    score_4yr, _, _ = _score_yoe("requires 4 years of experience", max_years_experience=3)
+    score_6yr, _, _ = _score_yoe("requires 6 years of experience", max_years_experience=3)
+    score_12yr, _, _ = _score_yoe("requires 12 years of experience", max_years_experience=3)
+    assert score_4yr > score_6yr > score_12yr
+    assert score_12yr == 1.0  # floors out rather than going negative
+
+
 def test_yoe_not_mentioned_is_neutral_not_penalized():
     score, reason, required = _score_yoe("great benefits, flexible hours", max_years_experience=3)
     assert score == 5.0
@@ -152,6 +168,67 @@ def test_rank_jobs_sets_required_years_and_stack_overlap_on_the_job_object():
 
     assert by_url["u3"].required_years_experience == 1
     assert by_url["u3"].has_stack_overlap is False
+
+
+def test_extract_required_years_wraps_the_private_helper_for_a_job():
+    job = Job(
+        company_name="Acme", title="AI Engineer", apply_url="u1", source="test",
+        description="Requires 4+ years of experience.",
+    )
+    assert extract_required_years(job) == 4
+
+
+def test_extract_required_years_none_when_not_mentioned():
+    job = Job(company_name="Acme", title="AI Engineer", apply_url="u1", source="test")
+    assert extract_required_years(job) is None
+
+
+def test_match_skills_uses_gemini_keywords_when_present_ranked_by_importance():
+    job = Job(
+        company_name="Acme", title="AI Engineer", apply_url="u1", source="test",
+        description="unrelated text that would not match via substring scan",
+        jd_keywords=["LLM fine-tuning", "Kubernetes", "RAG pipelines", "Python scripting"],
+    )
+    matched = _match_skills(job, PROFILE, job.searchable_text())
+    matched_names = [name for name, _ in matched]
+    # "Kubernetes" isn't in PROFILE.preferred_keywords so it's excluded;
+    # the rest match and keep their 1-indexed position in jd_keywords.
+    assert matched == [("LLM fine-tuning", 1), ("RAG pipelines", 3), ("Python scripting", 4)]
+    assert "Kubernetes" not in matched_names
+
+
+def test_match_skills_does_not_false_positive_inside_unrelated_words():
+    # Regression: plain substring matching used to match "rag" inside
+    # "average" and "gpt" inside "chatgpt".
+    job = Job(
+        company_name="Acme", title="Senior Accountant", apply_url="u1", source="test",
+        description="Familiarity with ChatGPT is a plus. Track average tax savings.",
+    )
+    matched = _match_skills(job, PROFILE, job.searchable_text())
+    assert matched == []
+
+
+def test_match_skills_falls_back_to_static_scan_when_no_jd_keywords():
+    job = Job(
+        company_name="Acme", title="AI Engineer", apply_url="u1", source="test",
+        description="Python and RAG experience required.",
+    )
+    matched = _match_skills(job, PROFILE, job.searchable_text())
+    assert {name for name, _ in matched} == {"python", "rag"}
+
+
+def test_gemini_keyword_match_outweighs_a_lower_ranked_one_in_scoring():
+    top_ranked = Job(
+        company_name="Acme", title="AI Engineer", apply_url="u1", source="test",
+        jd_keywords=["python", "unrelated a", "unrelated b", "unrelated c"],
+    )
+    low_ranked = Job(
+        company_name="Acme", title="AI Engineer", apply_url="u2", source="test",
+        jd_keywords=["unrelated a", "unrelated b", "unrelated c", "unrelated d", "unrelated e", "python"],
+    )
+    top_result = score_job(top_ranked, PROFILE, ROLES)
+    low_result = score_job(low_ranked, PROFILE, ROLES)
+    assert top_result.score > low_result.score
 
 
 def test_cap_per_company_keeps_best_n_and_preserves_order():

@@ -4,15 +4,31 @@
 
 profile:
   # Jobs whose description asks for at most this many years of experience
-  # are ranked favorably; jobs asking for more score lower. Jobs that don't
-  # mention YOE at all are scored neutrally either way.
+  # are ranked favorably; jobs asking for more score lower on a gradient
+  # (never excluded outright). Jobs that don't mention YOE at all are
+  # scored neutrally either way.
   max_years_experience: 3
+  # Hard cutoff: jobs asking for more than this many years are dropped
+  # entirely before Gemini extraction even runs (see
+  # pipeline._within_experience_cap). Jobs that don't mention YOE at all
+  # always pass.
+  max_years_experience_hard_limit: 5
   preferred_countries:
     - India
     - Remote
     - Global remote
   remote_preference: strong           # strong | soft | none
-  preferred_keywords:                 # tech-stack overlap boosts rank score
+  # A job must overlap on at least this many of the keywords below (after
+  # skill matching — see gemini.enabled) to pass — the sole relevance gate.
+  # Title/role name is never used to include or exclude a job.
+  min_skill_matches: 1
+  # On-site/hybrid jobs based in one of these cities qualify even when not
+  # remote (checked before Gemini extraction runs, to bound API usage).
+  onsite_hub_cities:
+    - Gurgaon
+    - Gurugram
+    - Noida
+  preferred_keywords:                 # candidate's actual skill set — matched against each JD's Gemini-extracted (or, as fallback, plain-scanned) keywords
     - python
     - llm
     - genai
@@ -39,7 +55,26 @@ profile:
     - agentic
     - ai agent
 
+gemini:
+  # Extracts each new job's actual required skills (ranked by importance)
+  # from its JD text via the Gemini API, so scoring matches against your
+  # real skill set instead of only a fixed keyword scan (see
+  # gemini_extractor.py). Only runs on jobs that already passed the
+  # experience and location filters above, and only on brand-new postings —
+  # set enabled: false (or leave GEMINI_API_KEY unset) to fall back to a
+  # plain substring scan everywhere.
+  enabled: true
+  api_key_env_var: GEMINI_API_KEY
+  model: gemini-2.0-flash
+  batch_size: 10   # job descriptions bundled into a single API request
+
 roles:
+  # Search-time discovery keywords only (generic HTML career-page link-text
+  # matching, Himalayas query) plus a title-match scoring bonus in
+  # ranking.py. NOT a relevance filter — a job's title never determines
+  # whether it's kept; only skill overlap (see profile.min_skill_matches)
+  # does. Broad on purpose so title variants like SDE/FDE aren't missed at
+  # the scrape stage.
   include:
     - Applied AI Engineer
     - AI Engineer
@@ -51,15 +86,31 @@ roles:
     - AI Automation Engineer
     - AI Backend Engineer
     - ML Engineer
-  # Titles containing these words are hard-excluded even if they also match
-  # an include term above (e.g. "Senior Frontend / AI Engineer").
+    - Software Engineer
+    - Software Development Engineer
+    - SDE
+    - SDE-1
+    - SDE-2
+    - SDE I
+    - SDE II
+    - Forward Deployed Engineer
+    - FDE
+    - AI Software Engineer
+    - Artificial Intelligence Engineer
+    - Applied Scientist
+    - AI Research Engineer
+    - Backend Engineer
+    - Full Stack Engineer
+  # Titles containing these words are hard-excluded (matched as whole
+  # words/phrases via text_match.contains_term, so "hr" won't false-match
+  # inside e.g. "Chris" and "sales" won't false-match inside "Salesforce").
   exclude_keywords:
     - frontend
     - front-end
     - marketing
     - recruiter
     - human resources
-    - " hr "
+    - hr
     - sales
     - account executive
     - finance
@@ -106,9 +157,10 @@ email:
   sender_env_var: EMAIL_SENDER
   password_env_var: EMAIL_APP_PASSWORD
   recipient: palyashika641@gmail.com
-  top_n_in_email: 20
-  min_stars_in_email: 3
-  worth_looking_at_limit: 30   # cap on the collapsible "other jobs" section
+  # Jobs scoring at/above this land in "Top Recommendations"; every other
+  # new job that passed the skills filter is still listed in full, ranked
+  # by score, under "Other jobs worth looking at" — no count caps.
+  min_score_for_recommendation: 70.0
 
 limits:
   max_jobs_per_company: 5   # never show/store more than this many openings from one company per run

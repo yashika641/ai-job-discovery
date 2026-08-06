@@ -5,6 +5,7 @@ back to the repo by the workflow after each run).
 
 from __future__ import annotations
 
+import json
 import sqlite3
 from pathlib import Path
 
@@ -41,7 +42,8 @@ CREATE TABLE IF NOT EXISTS jobs (
     last_seen_at TEXT NOT NULL,
     rank_score REAL,
     rank_stars INTEGER,
-    rank_reason TEXT
+    rank_reason TEXT,
+    jd_keywords TEXT
 );
 
 CREATE TABLE IF NOT EXISTS applied_jobs (
@@ -80,6 +82,7 @@ class Database:
         self.conn.row_factory = sqlite3.Row
         self.conn.executescript(SCHEMA)
         self._migrate_daily_reports_columns()
+        self._migrate_jobs_columns()
         self.conn.commit()
 
     def _migrate_daily_reports_columns(self) -> None:
@@ -100,6 +103,13 @@ class Database:
             # Went through the aggregator-only rename; add companies_* back.
             self.conn.execute("ALTER TABLE daily_reports ADD COLUMN companies_checked INTEGER")
             self.conn.execute("ALTER TABLE daily_reports ADD COLUMN companies_failed INTEGER")
+
+    def _migrate_jobs_columns(self) -> None:
+        """Adds jd_keywords to a jobs table created before Gemini-based
+        skill extraction existed."""
+        cols = {row["name"] for row in self.conn.execute("PRAGMA table_info(jobs)")}
+        if "jd_keywords" not in cols:
+            self.conn.execute("ALTER TABLE jobs ADD COLUMN jd_keywords TEXT")
 
     def close(self) -> None:
         self.conn.close()
@@ -189,11 +199,13 @@ class Database:
             INSERT INTO jobs (
                 job_hash, company_id, company_name, title, location, remote,
                 apply_url, source, ats_platform, posted_date, company_priority,
-                first_seen_at, last_seen_at, rank_score, rank_stars, rank_reason
+                first_seen_at, last_seen_at, rank_score, rank_stars, rank_reason,
+                jd_keywords
             ) VALUES (
                 :job_hash, :company_id, :company_name, :title, :location, :remote,
                 :apply_url, :source, :ats_platform, :posted_date, :company_priority,
-                :first_seen_at, :last_seen_at, :rank_score, :rank_stars, :rank_reason
+                :first_seen_at, :last_seen_at, :rank_score, :rank_stars, :rank_reason,
+                :jd_keywords
             )
             ON CONFLICT(job_hash) DO UPDATE SET
                 last_seen_at = excluded.last_seen_at,
@@ -201,7 +213,8 @@ class Database:
                 rank_stars = excluded.rank_stars,
                 rank_reason = excluded.rank_reason,
                 apply_url = excluded.apply_url,
-                posted_date = excluded.posted_date
+                posted_date = excluded.posted_date,
+                jd_keywords = excluded.jd_keywords
             """,
             {
                 "job_hash": job.job_hash,
@@ -220,6 +233,7 @@ class Database:
                 "rank_score": job.rank_score,
                 "rank_stars": job.rank_stars,
                 "rank_reason": job.rank_reason,
+                "jd_keywords": json.dumps(job.jd_keywords) if job.jd_keywords else None,
             },
         )
         self.conn.commit()
