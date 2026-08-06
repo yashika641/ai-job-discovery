@@ -42,7 +42,7 @@ class GeminiConfig(BaseModel):
     # experience and location hard filters, to keep API usage bounded.
     enabled: bool = True
     api_key_env_var: str = "GEMINI_API_KEY"
-    model: str = "gemini-2.0-flash"
+    model: str = "gemini-3.5-flash"
     # Number of job descriptions bundled into a single API request.
     batch_size: int = 10
 
