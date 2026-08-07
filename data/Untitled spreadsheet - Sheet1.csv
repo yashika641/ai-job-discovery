@@ -1,0 +1,547 @@
+Company,ATS*
+Together AI,Custom / Unknown
+Modal,Ashby
+LlamaIndex,Ashby
+Unstructured,Ashby
+Continue,Ashby
+Langfuse,Ashby
+ElevenLabs,Ashby
+Synthesia,Greenhouse
+Runway,Ashby
+Perplexity,Ashby
+Harvey,Ashby
+Glean,Greenhouse
+Sierra,Custom
+FurtherAI,Ashby
+Zensors,Ashby
+AiPrise,Ashby
+Scispot,Ashby
+Turing Labs,Custom
+Sarvam AI,Greenhouse
+Krutrim,Custom
+Yellow.ai,Greenhouse / Custom
+Observe.AI,Greenhouse
+Uniphore,Greenhouse
+Haptik,Greenhouse
+Mad Street Den,Greenhouse
+SigTuple,Greenhouse
+Niramai,Greenhouse
+AI4Bharat,Custom
+Lyzr AI,Ashby
+Gnani.ai,Greenhouse
+Rephrase.ai,LinkedIn / Custom
+NeuralGarage,Custom
+SpotDraft,Ashby
+Scaler AI (Engineering team),Greenhouse
+Arya.ai,Greenhouse
+QpiAI,Greenhouse
+GalaxEye,Greenhouse
+Pixis,Greenhouse
+Mistral AI,Greenhouse
+Helsing,Greenhouse
+DeepL,Greenhouse
+Lovable,Ashby
+Dust,Ashby
+Poolside (EU team),Ashby
+Photoroom,Greenhouse
+Magic AI,Ashby
+Wayve,Greenhouse
+Graphcore,Workday
+Code Intelligence,Greenhouse
+Black Forest Labs,Ashby
+n8n,Greenhouse
+ZenRows,Greenhouse
+Weaviate,Ashby
+Toloka AI,Greenhouse
+Humanloop,Ashby
+Cohere,Greenhouse
+Waabi,Greenhouse
+Ada,Greenhouse
+League,Greenhouse
+FutureFit AI,Ashby
+Xanadu,Greenhouse
+DarwinAI,Custom
+AltaML,Greenhouse
+Sanctuary AI,Greenhouse
+BenchSci,Greenhouse
+Coveo,Workday
+Voiceflow,Ashby
+Deep Genomics,Greenhouse
+BlueDot,Greenhouse
+MindBridge,Greenhouse
+Lazer Technologies,Ashby
+Tailscale,Greenhouse
+Axiom Zen,Custom
+Enfabrica (Canada team),Ashby
+Relay Financial,Greenhouse
+GitLab,Greenhouse
+Automattic,Custom
+Canonical,Greenhouse
+Deel,Greenhouse
+Remote,Greenhouse
+Zapier,Custom
+Weights & Biases,Greenhouse
+Writer,Ashby
+LangChain,Ashby
+Hugging Face,Greenhouse
+Katonic AI,Custom
+Buffer,Custom
+DuckDuckGo,Greenhouse
+Grafana Labs,Greenhouse
+Elastic,Greenhouse
+HashiCorp,Greenhouse
+MongoDB,Greenhouse
+Cloudflare,Greenhouse
+Ashby,Ashby
+Andromeda Cluster,Ashby
+Stable,Ashby
+GitLab Careers,Greenhouse
+Automattic Careers,Custom
+Canonical Careers,Greenhouse
+Tailscale Careers,Greenhouse
+Zapier Careers,Custom
+Cloudflare Careers,Greenhouse
+Deel Careers,Greenhouse
+Remote Careers,Greenhouse
+n8n Careers,Greenhouse
+Weaviate Careers,Ashby
+Langfuse Careers,Ashby
+Voiceflow Careers,Ashby
+Baseten Careers,Ashby
+Modal Careers,Ashby
+LlamaIndex Careers,Ashby
+Humanloop Careers,Ashby
+ElevenLabs Careers,Ashby
+AssemblyAI,Ashby
+Invisible Technologies,Greenhouse
+Doist,Custom
+Contra,Ashby
+Oyster HR,Greenhouse
+10up,Greenhouse
+Vercel,Greenhouse
+Sanity,Greenhouse
+Linear,Ashby
+PostHog,Ashby
+Sourcegraph,Greenhouse
+Reducto,Ashby
+Factory,Ashby
+Decagon,Ashby
+Cognition AI,Ashby
+Augment Code,Ashby
+Anysphere (Cursor),Ashby
+Poolside,Ashby
+Codeium,Ashby
+Chainguard,Greenhouse
+Speechify,Greenhouse
+Elicit,Ashby
+Replit,Greenhouse
+Pinecone,Greenhouse
+Decodable,Ashby
+CrewAI,Ashby
+Tavus,Ashby
+Browserbase,Ashby
+Firecrawl,Ashby
+Mintlify,Ashby
+Cogram,Ashby
+Bleenk,Custom
+Pragmatike,Ashby
+DSME Global,Custom
+Emergence,Ashby
+Ema Unlimited,Ashby
+Hebbia,Ashby
+Magic,Ashby
+Reflection AI,Ashby
+Exa,Ashby
+Mechanical Orchard,Ashby
+Vannevar Labs,Greenhouse
+Ramp,Ashby
+Mercor,Ashby
+Bland AI,Ashby
+Rogo,Ashby
+Genspark,Ashby
+Cartesia,Ashby
+Physical Intelligence,Greenhouse
+Augment Computing,Ashby
+Reflection70B,Custom
+withRemote,Custom
+AiDASH,Greenhouse
+Better Mortgage,Ashby
+Phoenix360,Custom
+Scry AI,Custom
+VoyageX AI,Custom
+EverGen AI,Custom
+ThirdEye AI,Custom
+Sookti AI,Custom
+ThirdEye Data,Custom
+Xane AI,Custom
+Monsoon CreditTech,Greenhouse
+DeepRunner AI,Custom
+WeBuildTech,Custom
+Yellow.ai,Greenhouse
+Innovaccer,Greenhouse
+Eightfold AI,Greenhouse
+Adobe,Workday
+Microsoft,Custom
+Samsung R&D,Custom
+HCLTech AI Labs,Custom
+Paytm AI,Greenhouse
+SquadStack,Greenhouse
+Gan.ai,Ashby
+Rezo.ai,Greenhouse
+Fyle,Greenhouse
+Darwinbox,Greenhouse
+Sprinklr,Greenhouse
+Nagarro,SmartRecruiters
+Ciena,Workday
+MakeMyTrip AI,Workday
+Cars24 AI,Greenhouse
+Blinkit,Greenhouse
+Zomato,Greenhouse
+Airtel Digital,Workday
+ServiceNow,Greenhouse
+HERE Technologies,Greenhouse
+Dynatrace,Greenhouse
+Hewlett Packard Enterprise (HPE),Workday
+Cadence Design Systems,Workday
+Optum,Workday
+ZS Associates,Greenhouse
+Qualtrics,Greenhouse
+Cars24,Greenhouse
+AVEVA,Workday
+FiscalNote,Greenhouse
+Delhivery,Custom
+EXL,Workday
+BT Group,Workday
+Expedia Group,Greenhouse
+American Express,Workday
+Cvent,Greenhouse
+Agoda,Greenhouse
+BlackRock,Workday
+Fidelity International,Workday
+UnitedHealth Group / Optum,Workday
+Gartner,Workday
+McKinsey (QuantumBlack),Greenhouse
+Atlassian,Greenhouse
+Salesforce,Workday
+SAP Labs,SAP Careers
+Siemens,Workday
+Siemens Healthineers,Workday
+Philips,Workday
+GE Aerospace,Workday
+GE HealthCare,Workday
+Oracle,Oracle Recruiting
+Cisco,Workday
+NVIDIA,Workday
+Qualcomm,Workday
+AMD,Workday
+Samsung Research,Custom
+Google,Custom
+Meta,Custom
+Uber,Greenhouse
+Airbnb,Greenhouse
+Intuit,Workday
+PayPal,Eightfold
+Walmart Global Tech,Workday
+Target India,Workday
+Stripe,Lever
+Confluent,Greenhouse
+Snowflake,Greenhouse
+Datadog,Greenhouse
+Palo Alto Networks,Workday
+Rubrik,Greenhouse
+Cohesity,Greenhouse
+Nutanix,Greenhouse
+Freshworks,Greenhouse
+Mastercard,Workday
+S&P Global,Workday
+United Airlines Digital Technology,Workday
+R1 RCM,Workday
+Fidelity Investments,Workday
+Fiserv,Workday
+UKG,Greenhouse
+Pearson,Workday
+Ericsson,Workday
+Nokia,Workday
+Ericsson Enterprise Wireless,Workday
+Samsung Research Institute,Custom
+Synopsys,Workday
+Dassault Systèmes,Workday
+Bentley Systems,Greenhouse
+MathWorks,Workday
+Siemens Digital Industries,Workday
+Honeywell,Workday
+Keysight Technologies,Workday
+Juniper Networks,Workday
+F5,Greenhouse
+New Relic,Greenhouse
+Akamai,Greenhouse
+VMware (Broadcom),Workday
+Informatica,Workday
+Denodo,Greenhouse
+Cloudera,Greenhouse
+Teradata,Workday
+SAS,Workday
+NICE,Workday
+Genesys,Greenhouse
+Zoom,Greenhouse
+Twilio,Greenhouse
+EPAM Systems,Workday
+Globant,Workday
+SAP,SAP Careers
+HPE,Workday
+Dell Technologies,Workday
+Cadence,Workday
+UnitedHealth / Optum,Workday
+Thoughtworks,Custom
+Cognizant,Workday
+Publicis Sapient,Workday
+LTIMindtree,Workday
+Persistent Systems,Workday
+Capgemini Engineering,Workday
+Accenture,Workday
+IBM,Custom
+RingCentral,Greenhouse / Custom
+Harness,Greenhouse (The Economic Times)
+OpenText,Workday
+Rippling,Greenhouse
+Rippling Payments,Greenhouse
+ClickHouse,Greenhouse
+SingleStore,Greenhouse
+Neon,Ashby
+PlanetScale,Ashby
+Supabase,Ashby
+Railway,Ashby
+Render,Ashby
+Fly.io,Ashby
+Replicate,Ashby
+Fal.ai,Ashby
+Fireworks AI,Ashby
+OctoAI,Ashby
+Crusoe,Greenhouse
+CoreWeave,Greenhouse
+Skild AI,Greenhouse
+Figure AI,Greenhouse
+Shield AI,Greenhouse
+Anduril,Greenhouse
+VAST Data,Greenhouse
+DataRobot,Greenhouse
+Scale AI,Greenhouse
+Labelbox,Greenhouse
+Snorkel AI,Greenhouse
+Galileo AI,Ashby
+Arize AI,Greenhouse
+Comet ML,Greenhouse
+Hex,Greenhouse
+MotherDuck,Ashby
+Airbyte,Greenhouse
+Dagster Labs,Ashby
+Astronomer,Greenhouse
+Prefect,Greenhouse
+Temporal,Greenhouse
+StreamNative,Greenhouse
+Starburst,Greenhouse
+Qdrant,Ashby
+Milvus (Zilliz),Greenhouse
+Continue.dev,Ashby
+Pieces,Greenhouse
+CodeRabbit,Ashby
+Builder.io,Greenhouse
+Daily.dev,Ashby
+Snyk,Greenhouse
+Sonar,Greenhouse
+JetBrains,Custom
+Postman,Greenhouse
+Hasura,Greenhouse
+Deel,Ashby (Ashby Jobs)
+1Password,Greenhouse
+CloudBees,Greenhouse
+Kong,Greenhouse
+LaunchDarkly,Greenhouse
+OpenAI,Custom In-House
+Anthropic,Greenhouse
+Perplexity,Not Accessible
+Mistral AI,Lever
+Cursor,Not Accessible
+Windsurf,Ashby
+Hugging Face,Workable
+Together AI,Lever
+Vapi,Ashby
+Groq,Greenhouse
+Baseten,Ashby
+Decart,Ashby
+SandboxAQ,Greenhouse
+Sierra,Ashby
+Writer,Lever
+Suno,Ashby
+Runway,Greenhouse
+Retool,Greenhouse
+Vercel,Not Accessible
+Supabase,Not Accessible
+PlanetScale,Lever
+Databricks,Workday
+Snowflake,Workday
+Confluent,Workday
+Cockroach Labs,Greenhouse
+Stripe,Workday
+Brex,Workday
+Ramp,Workday
+Plaid,Workday
+Rippling,Rippling
+Mercury,Greenhouse
+Notion,Not Accessible
+Canva,Not Accessible
+Airtable,Greenhouse
+Zapier,Greenhouse
+Loom,Greenhouse
+GitLab,Not Accessible
+Automattic,Greenhouse
+Elastic,Workday
+MongoDB,Workday
+Redis,Greenhouse
+Sentry,Greenhouse
+HashiCorp,Not Accessible
+Fly.io,Not Accessible
+dbt Labs,Not Accessible
+Tailscale,Ashby
+Wiz,Greenhouse
+Abnormal AI,Greenhouse
+Nuro,Greenhouse
+Skydio,Greenhouse
+Zipline,Greenhouse
+PathAI,Greenhouse
+Tempus AI,Workday
+Recursion,Workday
+Insitro,Greenhouse
+Abridge,Greenhouse
+Rad AI,Greenhouse
+C3 AI,Workday
+Palantir,Workday
+DataRobot,Workday
+Hex,Ashby
+Preset,Ashby
+Kraken,Workday
+AssemblyAI,Greenhouse
+Deepgram,Greenhouse
+Sakana AI,Ashby
+xAI,Greenhouse
+OpenRouter,Ashby
+Anaconda,Greenhouse
+Fiddler AI,Greenhouse
+Zeta,Greenhouse
+Razorpay,Greenhouse
+Juspay,
+PhonePe,Greenhouse
+Groww,lever
+Zerodha,Not Accessible
+CRED,Not Accessible
+Meesho,
+Swiggy,Custom In-House
+Flipkart,Workday Recruiting
+Myntra,Workday Recruiting
+Zepto,Greenhouse
+Blinkit,Workday / Custom Zomato Infrastructure
+Slice,Greenhouse / Lever
+Navi,Custom Infrastructure / Keka / Rippling
+Fi Money,Greenhouse
+BharatPe,Lever
+Dream11,Greenhouse
+ShareChat,Greenhouse
+InMobi,Workday Recruiting
+Unacademy,Darwinbox
+PhysicsWallah,Zoho Recruit / Internal Portals
+Scaler,Lever
+UpGrad,Greenhouse
+Niramai,Keka / Custom Hubs
+SigTuple,Keka / Custom Hubs
+Qure.ai,Greenhouse
+HealthPlix,Lever
+Gupshup,Jobvite / Greenhouse
+BrowserStack,Workday
+Hasura,
+Appsmith,
+Zoho,Custom In-House
+Freshworks,SmartRecruiters
+Chargebee,LinkedIn Jobs
+Whatfix,Greenhouse
+Darwinbox,Darwinbox ATS
+Perfios,Keka / Greenhouse
+Perfios AI,Keka / Greenhouse
+Rezo.ai,Lever
+Krutrim,Greenhouse
+Sarvam AI,Greenhouse / Ashby
+Soket AI,Ashby / Lever
+Neysa,Greenhouse
+Fractal Analytics,Greenhouse
+Tiger Analytics,Greenhouse
+Tredence,Greenhouse
+Mu Sigma,Internal Custom Portal / Zoho Recruit
+LatentView,Greenhouse
+Gramener,Greenhouse / Lever
+MathCo,Greenhouse
+TigerGraph India,Greenhouse
+Jio Platforms,SAP SuccessFactors / Custom Internal Portal
+Jio AI,SAP SuccessFactors / Custom Internal Portal
+Reliance Jio,SAP SuccessFactors / Custom Internal Portal
+Airtel X Labs,Workday Recruiting
+Microsoft India AI,Internal Custom ATS
+Google India,Internal Custom ATS
+Amazon India AI,Internal Custom ATS
+Adobe India,Workday Recruiting
+Intuit India,Workday Recruiting
+Atlassian India,Lever
+ServiceNow India,Workday Recruiting
+Salesforce India,Workday Recruiting
+Oracle India,Oracle Cloud HCM / iCIMS
+Cisco India,Workday Recruiting
+Nutanix India,Workday Recruiting
+VMware India,Workday Recruiting
+Nvidia India,Workday Recruiting
+Qualcomm India,Workday Recruiting
+Samsung R&D India,Workday Recruiting
+Siemens India Digital,Workday Recruiting
+Bosch AI,SmartRecruiters
+Siemens Healthineers India,Workday Recruiting
+GE Healthcare India,Workday Recruiting
+Philips Innovation Campus,Workday Recruiting
+Paytm,Workday Recruiting
+BlackBuck,Greenhouse
+Porter,Greenhouse
+Urban Company,Greenhouse
+Locus,Greenhouse
+Shipsy,Lever
+FarEye,Greenhouse
+Netradyne,Greenhouse
+HyperVerge,Greenhouse
+Entropik,Lever
+Detect Technologies,Greenhouse
+Pixxel,Greenhouse
+Agnikul,Greenhouse / Internal Portals
+Skyroot,Keka / Custom Forms
+Bellatrix Aerospace,Keka / Custom Portal
+Eka Software,Greenhouse
+GreyOrange,Greenhouse
+Truewind,Lever
+Atla AI,Lever
+Ponder AI,GitHub / Ashby
+Rogo,
+CrewAI,Greenhouse
+Cognosys,Lever
+E2B,Ashby
+Tavus,Greenhouse
+Pika,Ashby
+Captions,Greenhouse
+Wordware,GitHub / Ashby
+Dust,Lever
+Julep,Lever
+Flowise,Greenhouse
+LlamaIndex,Greenhouse
+Mem0,Lever
+Letta,Ashby
+Zep,Greenhouse
+Composio,Greenhouse
+Trigger.dev,Ashby
+Mastra,GitHub / Ashby
+Browser Use,GitHub / Ashby
+Firecrawl,GitHub / Ashby
+Crawl4AI,GitHub / Ashby
+payu,successfactors

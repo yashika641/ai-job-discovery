@@ -1,0 +1,28 @@
+DataRobot
+Sentry
+Kraken
+Plaid
+Confluent
+Snyk
+Automattic
+Weights & Biases
+DuckDuckGo
+Sourcegraph
+Redis
+Skydio
+Deepgram
+Retool
+Loom
+Groq
+Qdrant
+Anaconda
+Windsurf
+CrewAI
+Tempus AI
+Zep
+Humanloop
+Fiddler AI
+Hebbia
+Galileo AI
+Sakana AI
+Magic

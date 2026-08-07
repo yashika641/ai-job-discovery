@@ -280,7 +280,10 @@ def run_pipeline(
 
     # Stage 4: Gemini skill extraction, batched, restricted to brand-new
     # postings — already-seen jobs don't need re-analysis, which keeps API
-    # usage bounded to what's actually new each day.
+    # usage bounded to what's actually new each day. Rate/daily-budget
+    # limits come from settings.gemini (see config.yaml) and are enforced
+    # inside extract_keywords; `db` is passed so the daily request count
+    # persists across separate runs on the same day.
     new_for_extraction = [j for j in deduped_jobs if j.is_new]
     if settings.gemini.enabled:
         gemini_extractor.extract_keywords(
@@ -288,6 +291,10 @@ def run_pipeline(
             settings.gemini.model,
             new_for_extraction,
             settings.gemini.batch_size,
+            settings.gemini.requests_per_minute,
+            settings.gemini.requests_per_day,
+            settings.gemini.max_retries,
+            db,
         )
 
     # Stage 5: score everything (skill match now uses each job's

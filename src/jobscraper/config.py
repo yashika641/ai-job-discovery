@@ -43,8 +43,27 @@ class GeminiConfig(BaseModel):
     enabled: bool = True
     api_key_env_var: str = "GEMINI_API_KEY"
     model: str = "gemini-3.5-flash"
-    # Number of job descriptions bundled into a single API request.
-    batch_size: int = 10
+    # Number of job descriptions bundled into a single API request. Higher
+    # = fewer requests (helps RPM/RPD) at the cost of a bigger prompt (TPM)
+    # and a bigger blast radius if one batch's response fails to parse (see
+    # gemini_extractor._parse_response) -- 20 keeps prompts a few thousand
+    # tokens, far under free-tier TPM, while roughly halving request count
+    # versus the old batch_size=10.
+    batch_size: int = 20
+    # Free-tier throttling: these default to conservative numbers because
+    # Google doesn't publish one fixed guaranteed figure -- actual limits
+    # vary by model/account and change over time. Check your real numbers
+    # at https://aistudio.google.com/rate-limit and tighten/loosen these to
+    # match. gemini_extractor.py sleeps as needed to stay under
+    # requests_per_minute, and stops calling the API for the rest of the run
+    # once requests_per_day is hit (remaining jobs fall back to the plain
+    # substring skill scan rather than erroring out).
+    requests_per_minute: int = 8
+    requests_per_day: int = 180
+    # Retries on a 429/RESOURCE_EXHAUSTED response, with exponential
+    # backoff, before giving up on a batch and falling back for just those
+    # jobs -- see gemini_extractor._is_retryable.
+    max_retries: int = 3
 
     @property
     def api_key(self) -> str | None:

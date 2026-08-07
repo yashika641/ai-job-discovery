@@ -158,6 +158,13 @@ tests/                       pytest suite with fixtures for every parser
    - Add it to `.env` as `GEMINI_API_KEY`. If left unset, the pipeline logs
      it and falls back to a plain keyword scan instead of failing — see
      `gemini.enabled` in `config/config.yaml`.
+   - Tuned for the free tier by default: `gemini.requests_per_minute` and
+     `gemini.requests_per_day` throttle/cap outbound calls (with a few
+     backoff retries on 429s) so a run with a lot of new jobs degrades to
+     the plain keyword scan for the overflow instead of erroring out. Check
+     your key's actual limits at https://aistudio.google.com/rate-limit and
+     adjust those two numbers — Google's published free-tier numbers vary
+     by model/account and change over time.
 
 3. **Review `config/config.yaml`**: preferred countries, remote preference,
    your actual skill set (`profile.preferred_keywords` — this is what JD
@@ -305,6 +312,15 @@ tests/                       pytest suite with fixtures for every parser
   disabled, the API key is missing, or a request fails, ranking silently
   falls back to a plain substring scan of the job text — a Gemini outage
   never breaks the pipeline.
+- **Gemini calls are throttled and budgeted to survive the free tier.**
+  `gemini_extractor._RateLimiter` sleeps as needed to keep the run under
+  `gemini.requests_per_minute`; a request count persisted in the DB's
+  `pipeline_state` table (so it holds across separate runs on the same day)
+  stops calling Gemini for the rest of the day once `gemini.requests_per_day`
+  is spent. A 429/RESOURCE_EXHAUSTED response gets a few exponential-backoff
+  retries first. Either way, jobs that don't get Gemini-extracted skills
+  just fall back to the plain substring scan above — the run never fails
+  because of rate limits.
 - **Ranking is a transparent weighted score**, not a black box: title match
   (0-40), skill overlap (0-25), remote fit (0-15), country fit (0-10),
   YOE fit (0-10) → mapped to 1-5 stars. YOE fit extracts the minimum years

@@ -1,0 +1,31 @@
+{
+    "url": "https://www.naukri.com/jobapi/v3/search?noOfResults=20&urlType=search_by_keyword&searchType=adv&keyword=ai&pageNo=1&experience=2&wfhType=2&wfhType=3&jobAge=1&ctcFilter=6to10&k=ai&nignbevent_src=jobsearchDeskGNB&experience=2&wfhType=2&wfhType=3&jobAge=1&ctcFilter=6to10&seoKey=ai-jobs&src=directSearch&latLong=",
+    "headers": {
+        "appid": "109",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.naukri.com/ai-jobs?k=ai&nignbevent_src=jobsearchDeskGNB&experience=2&wfhType=2&wfhType=3&jobAge=1&ctcFilter=6to10",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"Google Chrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "systemid": "Naukri",
+        "clientid": "d3skt0p",
+        "sec-ch-ua-mobile": "?0",
+        "nkparam": "OX8faqRl0gkpRcCEw0ed3//NrBPzEx7VtOesDNVPYZ90g0rvHfZIjccRJ+YWRkK7QUffAQKYa3YVEsp9KEZb9w==",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36",
+        "accept": "application/json",
+        "gid": "LOCATION,INDUSTRY,EDUCATION,FAREA_ROLE",
+        "content-type": "application/json"
+    },
+    "cookies": {
+        "_t_ds": "5231101016112808773227-1785745575.308",
+        "J": "0",
+        "ak_bmsc": "165BCC48488ED9B15B30EEFEDEA4236B~000000000000000000000000000000~YAAQjwFAF4ZQnLCfAQAAsQ27xgBb63OtSZWacyO64yyWqmMP+kJ3yvSMTo66QOImsGbdkFtuWtSdYYmQu/iUjI17RYDEvX1B5gdcionn+Mc0UzeObf02lE2uv5wm58RGRSJ6wPIG6f1ABMWZ2rmr4Uneq/6RGJQLon4er4uVEO+CrwGpLVVFPcGu/4h37nlH2Zh3mLvo1NYno3rSP/hUb8lRAxg8XbgaH73EiMECNcfezS77Hs2b1xjhujOVQTg1hKFDoY6XcTUDj/avM2PhVny7YzgC1nnwZi9uY803rCyFWi3LBKtyOb0UlWjF/UEYzYlJ+7Hs2g3IGrjxnBFRVi04o0E7OXu7LrR7r9QerCaVZMC4aXD576MRZAnLeEUxxZ+22M7uEyBOad1oDuRPBsU6Ri5WvKdEhe5ld4M7I7o8hG3bnz/I0UXxYLA6s7FWtXxK4w8+FK9CSQ==",
+        "bm_sv": "DD8FB5E8C24CFA73A05BDD6201E6C869~YAAQjwFAF69QnLCfAQAAEQ67xgDcYpb1JjjRK1DkxUD8NIj4D4XbqfwZGgO0e43G5cdqLymebh2ydZxbBLv9XdLgVh/1TGZ6xq4GdYu71VlDkPBljodAMMrR1ukIQmAc6kKGxNdKjx2kDNpt/C4YXM9n5AWFZ0RUuxWRPiaThkz2r1uQNn+84xwp2ZVnmzG9eIcaMOXu7x2DboEpsAuC/s0QlQ1UpaG6gBeDMP9+UgQpiKPsU+hcnGSSJIebm3Hl~1",
+        "_ga_K2YBNZVRLL": "GS2.1.s1785745575$o1$g0$t1785745575$j60$l0$h0",
+        "_ga": "GA1.1.109563999.1785745576",
+        "_gcl_au": "1.1.332150228.1785745576.-.-.1785745575.652449832.1785745576.1785745575",
+        "IDE": "AHWqTUkQXd-T0OAZXgmFrcIZpHcjYqgJP-SYkQjHfqrBbiCwNtdHpvEyTIYXsylvzh8",
+        "__gads": "ID=6e8a4afe77f29bed:T=1785745575:RT=1785745575:S=ALNI_MampepCT2oWpi4oGL6yWOjGA7kD9A",
+        "__gpi": "UID=0000145d4293e834:T=1785745575:RT=1785745575:S=ALNI_MbRD9ZWeTbVzTYDNegTiHjqimMpZA",
+        "__eoi": "ID=71d9d712658ca667:T=1785745575:RT=1785745575:S=AA-AfjYWu_nTa33FwAucuXcZ2tji",
+        "g_state": "{\"i_l\":0,\"i_ll\":1785745576341,\"i_b\":\"WEJcSn8fPz/M4F28ESgoscUjoREKXPbg0e71K6SOo2k\",\"i_e\":{\"enable_itp_optimization\":24},\"i_et\":1785745576341}"
+    }
+}

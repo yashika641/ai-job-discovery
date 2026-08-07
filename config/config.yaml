@@ -70,7 +70,17 @@ gemini:
   # errors again, check https://ai.google.dev/gemini-api/docs/models for
   # the current model lineup and update this.
   model: gemini-3.5-flash
-  batch_size: 10   # job descriptions bundled into a single API request
+  batch_size: 20   # job descriptions bundled into a single API request -- fewer requests per run
+  # Free-tier throttling. These are conservative defaults, not Google's
+  # official numbers (which vary by account/model and change over time) --
+  # check https://aistudio.google.com/rate-limit for your key's actual
+  # limits and adjust. gemini_extractor.py sleeps to stay under
+  # requests_per_minute, and once requests_per_day is used up for the day it
+  # stops calling Gemini and lets the remaining new jobs fall back to a
+  # plain substring skill scan instead of erroring out.
+  requests_per_minute: 8
+  requests_per_day: 180
+  max_retries: 3   # exponential-backoff retries on a 429/RESOURCE_EXHAUSTED response
 
 roles:
   # Search-time discovery keywords only (generic HTML career-page link-text
