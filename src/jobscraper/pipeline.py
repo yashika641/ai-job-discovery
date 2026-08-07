@@ -1,8 +1,8 @@
 """Orchestrates one full daily run:
 
     fetch -> categorical exclude -> hard experience filter -> hard location
-    filter -> dedupe -> Gemini skill extraction (new jobs only) -> score ->
-    skill-overlap filter -> store -> report -> email
+    filter -> hard age filter -> dedupe -> Gemini skill extraction (new jobs
+    only) -> score -> skill-overlap filter -> store -> report -> email
 
 This is the single entrypoint scripts/run_daily.py calls; nothing here
 should be GitHub-Actions-specific.
@@ -10,14 +10,17 @@ should be GitHub-Actions-specific.
 Two independent fetch passes feed the same pipeline:
   - Company pass: per-company ATS scraping against data/companies.csv
     (curated, genuine ATS provider + identifier per company — see
-    scripts/detect_ats.py). This is the high-volume source.
+    scripts/detect_ats.py). This is the high-volume source. It has no
+    incremental cursor -- each run re-scrapes whatever's currently live on
+    every career page -- so the age filter below is what actually keeps
+    stale postings out, not just dedupe.
   - Global pass: cross-company aggregators (RemoteOK, WeWorkRemotely,
     Himalayas, Jobicy) that need no company list, date-windowed via
     `since` (see _compute_since) so repeat runs only look at what's new.
 
-The experience and location filters run as hard, early cuts specifically so
-that the (paid, rate-limited) Gemini skill-extraction step only ever runs
-on jobs that already look like plausible candidates — see
+The experience, location, and age filters run as hard, early cuts
+specifically so that the (paid, rate-limited) Gemini skill-extraction step
+only ever runs on jobs that already look like plausible candidates — see
 gemini_extractor.py.
 """
 
@@ -45,6 +48,7 @@ from jobscraper.report import ReportData
 from jobscraper.report.html import render_html
 from jobscraper.report.markdown import render_markdown
 from jobscraper.sources import himalayas, jobicy, remoteok, weworkremotely
+from jobscraper.sources.date_utils import parse_posted_at
 from jobscraper.text_match import contains_term
 
 logger = logging.getLogger(__name__)
@@ -78,6 +82,26 @@ def _within_experience_cap(job: Job, max_years: int) -> bool:
     disqualifying."""
     required = extract_required_years(job)
     return required is None or required <= max_years
+
+
+def _within_age_limit(job: Job, max_age_days: int | None, now: datetime) -> bool:
+    """Hard freshness filter, applied to every job (company-ATS scrapes and
+    global-source jobs alike) before the paid Gemini extraction step, same
+    as the experience/location filters. Company ATS pages have no
+    incremental cursor -- unlike the global sources' `since` -- so without
+    this, a listing that's been live for months would pass straight
+    through every run. Reuses date_utils.parse_posted_at so it understands
+    every source/ATS's raw posted-date format. A disabled limit
+    (max_age_days=None) or a missing/unparseable posted_date always passes
+    -- several ATS adapters (BambooHR, generic HTML, Teamtailor, Workday's
+    relative "Posted X Days Ago" strings) never give us a parseable date,
+    and silence isn't evidence a job is stale."""
+    if max_age_days is None:
+        return True
+    posted_at = parse_posted_at(job.posted_date)
+    if posted_at is None:
+        return True
+    return posted_at >= now - timedelta(days=max_age_days)
 
 
 def _is_qualifying_remote(job: Job) -> bool:
@@ -272,6 +296,16 @@ def run_pipeline(
     hub_cities = settings.profile.onsite_hub_cities
     candidate_jobs = [j for j in candidate_jobs if _location_qualifies(j, hub_cities)]
     logger.info("%d jobs after location filter", len(candidate_jobs))
+
+    # Stage 3b: hard freshness filter — drops postings older than
+    # sources.max_job_age_days. This is what actually bounds the age of
+    # company-ATS jobs (that pass has no incremental cursor); for global
+    # sources it's mostly a no-op in steady state since `since` already
+    # keeps them recent, except on a first run's wider lookback window.
+    max_job_age_days = settings.sources.max_job_age_days
+    now = datetime.now(timezone.utc)
+    candidate_jobs = [j for j in candidate_jobs if _within_age_limit(j, max_job_age_days, now)]
+    logger.info("%d jobs after age filter (<= %s days)", len(candidate_jobs), max_job_age_days)
 
     applied_hashes = db.all_applied_hashes()
     known_hashes = db.all_known_hashes()

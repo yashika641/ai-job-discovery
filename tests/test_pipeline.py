@@ -1,8 +1,11 @@
+from datetime import datetime, timedelta, timezone
+
 from jobscraper.models import Job
 from jobscraper.pipeline import (
     _location_qualifies,
     _not_recommended_reason,
     _qualifies_for_recommendation,
+    _within_age_limit,
     _within_experience_cap,
 )
 
@@ -14,6 +17,7 @@ def _job(
     location="",
     description="",
     rank_score=80.0,
+    posted_date=None,
 ):
     return Job(
         company_name="Acme",
@@ -24,6 +28,7 @@ def _job(
         location=location,
         description=description,
         rank_score=rank_score,
+        posted_date=posted_date,
     )
 
 
@@ -43,6 +48,41 @@ def test_within_experience_cap_when_at_the_limit():
 def test_outside_experience_cap_when_above_the_limit():
     job = _job(description="Requires 7+ years of experience.")
     assert _within_experience_cap(job, max_years=5) is False
+
+
+# -- _within_age_limit ------------------------------------------------------
+
+_NOW = datetime(2026, 8, 8, tzinfo=timezone.utc)
+
+
+def test_within_age_limit_when_limit_disabled():
+    job = _job(posted_date=(_NOW - timedelta(days=9999)).isoformat())
+    assert _within_age_limit(job, max_age_days=None, now=_NOW) is True
+
+
+def test_within_age_limit_when_no_posted_date():
+    job = _job(posted_date=None)
+    assert _within_age_limit(job, max_age_days=30, now=_NOW) is True
+
+
+def test_within_age_limit_when_posted_date_unparseable():
+    job = _job(posted_date="Posted 3 Days Ago")  # e.g. Workday's relative format
+    assert _within_age_limit(job, max_age_days=30, now=_NOW) is True
+
+
+def test_within_age_limit_when_recent():
+    job = _job(posted_date=(_NOW - timedelta(days=5)).isoformat())
+    assert _within_age_limit(job, max_age_days=30, now=_NOW) is True
+
+
+def test_within_age_limit_at_the_boundary():
+    job = _job(posted_date=(_NOW - timedelta(days=30)).isoformat())
+    assert _within_age_limit(job, max_age_days=30, now=_NOW) is True
+
+
+def test_outside_age_limit_when_older_than_limit():
+    job = _job(posted_date=(_NOW - timedelta(days=31)).isoformat())
+    assert _within_age_limit(job, max_age_days=30, now=_NOW) is False
 
 
 # -- _location_qualifies ----------------------------------------------------

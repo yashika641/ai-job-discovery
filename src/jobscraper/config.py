@@ -92,6 +92,12 @@ class SourcesConfig(BaseModel):
     # On the very first run (no prior run recorded), fetch jobs posted in the
     # last N days. Every run after that only fetches since the previous run.
     first_run_lookback_days: int = 3
+    # Hard freshness filter applied to every job -- company-ATS scrapes
+    # included (see pipeline._within_age_limit) -- before Gemini extraction.
+    # A posting older than this many days is dropped outright. Set to null
+    # to disable. A missing/unparseable posted_date always passes -- not
+    # every ATS adapter exposes one.
+    max_job_age_days: int | None = 30
 
 
 class HttpConfig(BaseModel):

@@ -152,6 +152,12 @@ sources:
     remoteok: https://remoteok.com/api
     himalayas: https://himalayas.app/jobs/api/search
     jobicy: https://jobicy.com/api/v2/remote-jobs
+  # Hard freshness filter applied to every job, including company-ATS
+  # scrapes (which have no incremental "since" cursor of their own -- see
+  # pipeline._within_age_limit). Drops anything posted more than this many
+  # days ago; set to null to disable. Missing/unparseable posted_date
+  # always passes through.
+  max_job_age_days: 30
 
 http:
   timeout_seconds: 15
